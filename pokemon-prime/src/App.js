@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
-import LandingPage from "./landingPage";
+import "./css/index.css";
+import LandingPage from "./components/landingPage";
 
 function App() {
   // this calls on the components
