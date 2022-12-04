@@ -1,0 +1,1 @@
+//section for dead pokemon
