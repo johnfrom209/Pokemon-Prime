@@ -1,11 +1,19 @@
 import "./css/index.css";
-import LandingPage from "./components/landingPage";
+// import LandingPage from "./components/landingPage";
+import Challenge from "./components/challenge/Challenge";
+
+// drap and drop imports
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
   // this calls on the components
   return (
     <div className="App">
-      <LandingPage />
+      <DndProvider backend={HTML5Backend}>
+        {/* <LandingPage /> */}
+        <Challenge />
+      </DndProvider>
     </div>
   );
 }
