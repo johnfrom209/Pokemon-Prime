@@ -20,7 +20,7 @@ const pokemonSchema = new Schema({
     superEffective: [String],
 
     weakness: [String],
-    
+
     sprite: {
         type: String,
     },
@@ -28,3 +28,7 @@ const pokemonSchema = new Schema({
         type: String,
     },
 });
+
+const Pokemon = model('Pokemon', pokemonSchema);
+
+module.exports = Pokemon;

@@ -5,6 +5,9 @@ const gameSchema = new Schema({
         type: String,
         required: true
     },
-    encounters: [{}], //Shit what goes here?
+    encounters: [{}], //what goes here?
     gymLeaders: [Leaders]
 });
+
+const Game = model('Game', gameSchema);
+module.exports = Game;
