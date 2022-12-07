@@ -5,5 +5,6 @@ const gameSchema = new Schema({
         type: String,
         required: true
     },
-    encounters: [{}]
-}
+    encounters: [{}], //Shit what goes here?
+    gymLeaders: [Leaders]
+});
