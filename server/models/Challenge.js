@@ -5,8 +5,15 @@ const Pokemon = require('./Pokemon');
 
 const ChallengeSchema = new Schema({
     game: Game,
-    player1: User,
-    player2: User,
+    player1: {
+        type: User,
+        ref: 'User',
+        required: true,
+    },
+    player2: {
+        type: User,
+        ref: 'User'
+    },
     battleParty1: {
         type: [Pokemon],
         validate: [() => this.battleParty1.length <= 6, 'Battle party must not be more than 6 Pokemon.']
