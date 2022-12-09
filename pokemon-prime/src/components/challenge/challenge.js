@@ -7,61 +7,45 @@
 // import quickref from "./quickref";
 // import { DndProvider } from 'react-dnd';
 // import { HTML5Backend } from 'react-dnd-html5-backend';
-// import smeargle from '../../images/pokestarsmeargle.png';
-import SpriteDrag from './SpriteDrag';
-import { useDrop } from 'react-dnd';
 
-import React, { useState } from 'react';
 
+import React, { useEffect, useState } from 'react';
+import dragula from 'dragula';
+import AddPokemon from './AddPokemon';
+
+var drake = dragula([document.querySelector('.player1Caught'), document.querySelector('.battleparty')], { copy: false, revertOnSpill: true, accepts: function (el, target, source, sibling) { return true; } });
 // this is temp
 const spriteList = [
     {
         id: 1,
-        name: 'smeargle',
-        sprite: "https://play.pokemonshowdown.com/sprites/ani/smeargle.gif"
+        name: 'VanSmearg',
+        species: 'smeargle',
+        sprite: "https://play.pokemonshowdown.com/sprites/ani/smeargle.gif",
+        type: 'normal',
     }, {
         id: 2,
-        name: 'charizard',
-        sprite: "https://play.pokemonshowdown.com/sprites/ani/charizard.gif"
+        name: 'Oven',
+        species: 'charizard',
+        sprite: "https://play.pokemonshowdown.com/sprites/ani/charizard.gif",
+        type: ['fire', 'flying']
     }
 ]
 
+
+
 export default function Challenge() {
-    const [tempText, setTempTest] = useState(spriteList)
-    const [player1Caught, setPlayer1Caught] = useState([]);
-    // array for battle party
+
     const [battleparty, setBattleparty] = useState([]);
+    const [graveyard, setGraveyard] = useState([]);
+    const [player1Caught, setPlayer1Caught] = useState(spriteList);
 
-    const [{ isOver }, drop] = useDrop(() => ({
-        accept: "sprite",
-        // identifies the item getting added to the battleparty
-        drop: (item) => addSpriteToBattle(item.id),
-        collect: (monitor) => ({
-            isOver: !!monitor.isOver(),
-        }),
-    }))
+    // useEffect(() => {
+    //     console.log('battleparty', battleparty);
+    // }, [battleparty, graveyard, player1Caught]);
 
-    // this is how you add to battle party
-    // need to limit to 6
-    // need to splice out of the other array
-    const addSpriteToBattle = (pokemonId) => {
-        const battleTemp = spriteList.filter((pokemon) => pokemonId === pokemon.id);
-
-        setBattleparty((pokemon) => [...pokemon, battleTemp[0]])
-
-        let index;
-        // find by id then splice that index
-        for (let i = 0; i < spriteList.length; i++) {
-            if (spriteList[i].id === pokemonId) {
-                index = i;
-                break
-            }
-        }
-        console.log("This is a result: ", index);
-        spriteList.splice(index, 1)
-        setTempTest(spriteList)
-
-    }
+    const renderPlayer1Caught = player1Caught.map((pokemon) => {
+        return <AddPokemon key={pokemon.id} pokemon={pokemon} />
+    })
 
     return (
         <div className='grid grid-cols-3'>
@@ -71,34 +55,31 @@ export default function Challenge() {
                     <h4 >Alpha Sapphire</h4>
                 </div>
                 {/* added class 'player1Caught' just for identification. it does nothing */}
-                <div className='player1Caught bg-indigo-800 h-4/5 m-5 rounded' ref={drop}>
+                <div className='bg-indigo-800 h-4/5 m-5 rounded' >
                     {/* this is the contain for the Pokemon they caught */}
-                    {/* this calls on the SpriteDrag component and does magic to add the drag-ability */}
-                    {/* {spriteList.map((sprite) => {
-                        return <  SpriteDrag sprite={sprite.sprite} id={sprite.id} />
-                    })} */}
-
+                    <div className='player1Caught h-full w-full '>
+                        {renderPlayer1Caught}
+                    </div>
                 </div>
             </div>
-            <div className='col-span-1 h-screen bg-gray-500 '>
+            <div className='h-screen bg-gray-500 '>
                 <div className='bg-gray-800 h-1/4 my-2 mt-24 rounded'>
                     {/* add pokemon */}
-                    {spriteList.map((sprite) => {
-                        return <  SpriteDrag sprite={sprite.sprite} id={sprite.id} />
-                    })}
+
                 </div>
-                <div className='bg-gray-800 h-1/4 my- rounded2' ref={drop}>
+                <div className='bg-gray-800 h-1/4 my- rounded2'>
                     {/* Battle Party */}
-                    {battleparty.map((sprite) => {
-                        return <  SpriteDrag sprite={sprite.sprite} id={sprite.id} />
-                    })}
+                    <div className='battleparty h-full w-full flex'>
+
+                    </div>
+
                 </div>
                 <div className='bg-gray-800 h-1/4 my-2 rounded'>
                     {/* Quick Ref Area */}
                 </div>
 
             </div>
-            <div className='col-span-1 h-screen bg-red-500'>
+            <div className='h-screen bg-red-500'>
                 <div className='p-2 text-right'>
                     <h2 className='text-lg'>Player 2</h2>
                     <h4 >Omega Ruby</h4>
