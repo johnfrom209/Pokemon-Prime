@@ -45,6 +45,7 @@ export default function Challenge() {
     const [graveyard, setGraveyard] = useState([]);
     const [player1Caught, setPlayer1Caught] = useState(spriteList);
     const [addPokemon, setAddPokemon] = useState('');
+    const [nickName, setNickName] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     // useEffect(() => {
@@ -54,25 +55,40 @@ export default function Challenge() {
     const renderPlayer1Caught = player1Caught.map((pokemon) => {
         return <AddPokemon key={pokemon.id} pokemon={pokemon} />
     })
-    //I don't feel like I need this. I can just use the pokemon name from the input
+
     // const handleInputChange = (e) => {
-    //     const { value } = e.target;
-    //     //what is value here?
-    //     console.log(value);
+    //     const { target } = e;
+    //     const inputType = target.name;
+    //     const inputValue = target.value.trim();
 
-    //     const pokemonName = value.trim();
 
-    //     if (pokemonName.length) {
-    //         // setAddPokemon(pokemonName);
+    //     if (inputType === 'nickname') {
+    //         //just if its not empty
+    //         if (!inputValue) {
+    //             setErrorMessage('Please enter a nickname');
+    //             return;
+    //         }
+    //     } else if (inputType === 'species') {
+    //         //just if its not empty
+    //         if (!inputValue) {
+    //             setErrorMessage('Please enter a Species');
+    //             return;
+    //         }
     //     } else {
-    //         setAddPokemon('');
+    //         setErrorMessage(inputValue);
     //     }
     // }
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
+
         if (!addPokemon) {
-            setErrorMessage('Please enter a Pokemon name');
+            setErrorMessage('Please enter a Species');
+            return;
+        }
+
+        if (!nickName) {
+            setErrorMessage('Please enter a nickname');
             return;
         }
 
@@ -81,6 +97,7 @@ export default function Challenge() {
         //setAddPokemon('');
 
         setAddPokemon('');
+        setNickName('');
         setErrorMessage('');
 
     }
@@ -104,28 +121,41 @@ export default function Challenge() {
                 <div className='bg-gray-800 h-1/4 my-2 mt-24 rounded relative'>
                     {/* add pokemon */}
                     {errorMessage && (
-                        <div className='pt-5'>
+                        <div className='pt-5 absolute -mt-12 ml-32 top-0'>
                             <p className="error-text text-white text-center">{errorMessage}</p>
                         </div>
                     )}
-                    <form className='absolute bottom-0 right-20'>
+                    <form className='addPokemon text-xs grid grid-cols-2 gap-4 place-content-around'>
+
                         <input
                             type='text'
-                            placeholder='Pokemon Name'
-                            className='w-1/2 p-2 rounded'
+                            defaultValue={nickName}
+                            name='nickname'
+                            placeholder='Nickname'
+                            className='w-2/6 p-2 text-center block mt-2 m-auto rounded'
+                        />
+                        <input
+                            type='text'
+                            defaultValue={addPokemon}
+                            name='species'
+                            placeholder='Species'
+                            className='w-2/6 p-2 block m-auto text-center rounded'
                         />
                         <button
-                            className='bg-gray-300 p-2 m-2 rounded'
+                            className='bg-gray-300 p-2 rounded w-2/6 place-self-center'>
+                            {/* put dice? to indicate a random name generation */}
+                            Random</button>
+                        <button
+                            className='bg-gray-300 block place-self-center w-2/6 m-auto p-2 m-2 rounded '
                             onClick={handleFormSubmit}
-                        >Add Pokemon</button>
+                        >Add</button>
                     </form>
 
                 </div>
 
-                <div className='bg-gray-800 h-1/4 my- rounded2'>
+                <div className='bg-gray-800 h-1/4 rounded'>
                     {/* Battle Party */}
-                    <div className='battleparty dragula-container h-full w-full grid grid-cols-6 '>
-
+                    <div className='battleparty dragula-container h-full w-full grid grid-cols-6 gap-4 '>
                     </div>
 
                 </div>
