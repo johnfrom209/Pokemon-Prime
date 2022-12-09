@@ -13,7 +13,11 @@ import React, { useEffect, useState } from 'react';
 import dragula from 'dragula';
 import AddPokemon from './AddPokemon';
 
-var drake = dragula([document.querySelector('.player1Caught'), document.querySelector('.battleparty')], { copy: false, revertOnSpill: true, accepts: function (el, target, source, sibling) { return true; } });
+var drake = dragula([document.querySelector('.player1Caught'), document.querySelector('.battleparty')], {
+    copy: false, revertOnSpill: true, isContainer: function (el) {
+        return el.classList.contains('dragula-container');
+    }
+});
 // this is temp
 const spriteList = [
     {
@@ -57,7 +61,7 @@ export default function Challenge() {
                 {/* added class 'player1Caught' just for identification. it does nothing */}
                 <div className='bg-indigo-800 h-4/5 m-5 rounded' >
                     {/* this is the contain for the Pokemon they caught */}
-                    <div className='player1Caught h-full w-full '>
+                    <div className='player1Caught dragula-container h-full w-full '>
                         {renderPlayer1Caught}
                     </div>
                 </div>
@@ -69,7 +73,7 @@ export default function Challenge() {
                 </div>
                 <div className='bg-gray-800 h-1/4 my- rounded2'>
                     {/* Battle Party */}
-                    <div className='battleparty h-full w-full flex'>
+                    <div className='battleparty dragula-container h-full w-full flex'>
 
                     </div>
 
