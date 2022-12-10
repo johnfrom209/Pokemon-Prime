@@ -52,6 +52,12 @@ const typeDefs = gql`
         losses: Int
     }
 
+    type Encounter {
+        _id: ID
+        location: String!
+        pokemon: Pokemon
+    }
+
     type Query {
         challenge(_id: ID!): Challenge
         challenges: [Challenge]
@@ -67,6 +73,9 @@ const typeDefs = gql`
 
         user(_id: ID!): User
         users: [User]
+
+        encounter(_id: ID!): Encounter
+        encounters: [Encounter]
     }
 
     type Mutation {
@@ -80,6 +89,8 @@ const typeDefs = gql`
 
         addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): User
 
+        addEncounter(location: String!, pokemon: ID): Encounter
+
 
 
         updateChallenge(_id: ID!, game: ID, player1: ID, player2: ID, battleParty1: [ID], battleParty2: [ID], p1Caught: [ID], p2Caught: [ID], p1Graveyard: [ID], p2Graveyard: [ID]): Challenge
@@ -92,6 +103,8 @@ const typeDefs = gql`
 
         updateUser(_id: ID!, username: String, email: String, password: String, wins: Int, losses: Int): User
 
+        updateEncounter(_id: ID!, location: String, pokemon: ID): Encounter
+
 
 
         removeChallenge(_id: ID!): Challenge
@@ -103,6 +116,8 @@ const typeDefs = gql`
         removePokemon(_id: ID!): Pokemon
 
         removeUser(_id: ID!): User
+
+        removeEncounter(_id: ID!): Encounter
 
     }
 `

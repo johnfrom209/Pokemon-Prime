@@ -1,11 +1,12 @@
 const {Schema, model} = require('mongoose');
+const Encounter = require('./Encounter');
 
 const gameSchema = new Schema({
     title: {
         type: String,
         required: true
     },
-    encounters: [encounters], //what goes here?
+    encounters: [Encounter], //what goes here?
     gymLeaders: [Leaders]
 });
 
