@@ -5,9 +5,6 @@
 // import graveyard from "./graveyard";
 // import newpokemon from "./newpokemon";
 // import quickref from "./quickref";
-// import { DndProvider } from 'react-dnd';
-// import { HTML5Backend } from 'react-dnd-html5-backend';
-
 
 import React, { useEffect, useState } from 'react';
 import dragula from 'dragula';
@@ -16,7 +13,12 @@ import AddPokemon from './AddPokemon';
 var drake = dragula([document.querySelector('.player1Caught'), document.querySelector('.battleparty')], {
     copy: false, revertOnSpill: true, isContainer: function (el) {
         return el.classList.contains('dragula-container');
+    },
+
+    shadow: function (el, source) {
+        return el.cloneNode(true);
     }
+
 });
 
 
@@ -153,7 +155,7 @@ export default function Challenge() {
 
                 </div>
 
-                <div className='bg-gray-800 h-1/4 rounded'>
+                <div id='drop-battleparty' className='bg-gray-800 h-1/4 rounded'>
                     {/* Battle Party */}
                     <div className='battleparty dragula-container h-full w-full grid grid-cols-6 gap-4 '>
                     </div>

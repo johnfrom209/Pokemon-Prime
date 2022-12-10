@@ -15,3 +15,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card-info>div img {
+  display: inline-block;
+  margin-left: 6rem;
+}
+
+#drop-battleparty>div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+#drop-battleparty>div>div {
+  display: grid;
+  grid-column: span 1;
+  font-size: 0;
+  width: 6rem;
+  background-color: transparent;
+  /* height: 10px;
+  width: 40px; */
+}
+
+#drop-battleparty>.card-info {
+  font-size: 0;
+  width: 100%;
+}
+
+#drop-battleparty>div>div>div {
+  grid-column: span 1;
+  height: 10px;
+  width: 100px;
+  display: inline-block;
+
+}
