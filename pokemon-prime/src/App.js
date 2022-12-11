@@ -1,5 +1,5 @@
 import "./css/index.css";
-// import LandingPage from "./components/landingPage";
+// import LandingPage from "./components/LandingPage";
 import Challenge from "./components/challenge/Challenge";
 
 // drap and drop imports
