@@ -121,7 +121,5 @@ const typeDefs = gql`
 
     }
 `
-/*
- for query
-    challenge
-*/
+
+module.exports = typeDefs;

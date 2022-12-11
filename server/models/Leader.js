@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 const Pokemon = require('./Pokemon');
 
-const leaderSchema = newSchema({
+const leaderSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -13,7 +13,7 @@ const leaderSchema = newSchema({
         }
     ],
     pokemonParty: {
-            type: [Pokemon],
+            type: [Pokemon.schema],
     },
     maxLevel: {
         type: Number,

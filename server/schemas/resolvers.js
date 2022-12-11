@@ -20,6 +20,42 @@ const resolvers = {
                 params.player2 = player2;
             }
             return await Challenge.find(params).populate(game).populate(player1).populate(player2)
+        },
+        //for mutations
+        /*
+        me: async (parent, args, context) => {
+        }
+        */
+
+    },
+    Mutation: {
+        //for creating
+        addChallenge: async (parent, {game, player1, player2, battleParty1, battleParty2, p1Caught, p2Caught, p1Graveyard, p2Graveyard}) => {
+            const challenge = await Challenge.create({game, player1, player2, battleParty1, battleParty2, p1Caught, p2Caught, p1Graveyard, p2Graveyard});
+            return challenge;
+        },
+        addGame: async (parent, {title, encounters, gymLeaders}) => {
+            const game = await Game.create({title, encounters, gymLeaders});
+            return game;
+        },
+        addLeader: async (parent, {name, type, pokemonParty, maxLevel, badge}) => {
+            const leader = await Leader.create({name, type, pokemonParty, maxLevel, badge});
+            return leader;
+        },
+        addPokemon: async (parent, {name, species, type, level, superEffective, weakness, sprite, evolution}) => {
+            const pokemon = await Pokemon.create({name, species, type, level, superEffective, weakness, sprite, evolution});
+            return pokemon;
+        },
+        addUser: async (parent, {username, email, password, wins, losses}) => {
+            const user = await User.create({username, email, password, wins, losses});
+            const token = signToken(user);
+            return {token, user};
+        },
+        addEncounter: async (parent, {location, pokemon}) => {
+            const encounter = await Encounter.create({location, pokemon});
+            return encounter;
         }
     }
 }
+
+module.exports = resolvers;

@@ -1,12 +1,12 @@
-const {schemas, model} = require('mongoose');
+const {Schema, model} = require('mongoose');
 const Pokemon = require('./Pokemon');
 
 const encounterSchema = new Schema({
-    route: {
+    location: {
         type: String,
         required: true,
     },
-    pokemon: [Pokemon],
+    pokemon: [Pokemon.schema],
 });
 
 const Encounter = model('Encounter', encounterSchema);
