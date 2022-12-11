@@ -23,12 +23,35 @@ const resolvers = {
         },
         //for games
         game: async (parent, {gameId}) => {
-            return await Game.findById(gameId)
+            return await Game.findById(gameId);
         },
         games: async () => {
             return await Game.find();
         },
-        
+
+        //for leaders
+        leader: async (parent, {leaderId}) => {
+            return await Leader.findById(leaderId);
+        },
+        leaders: async () => {
+            return await Leader.find();
+        },
+
+        //for pokemon
+        pokemon: async (parent, {pokemonId}) => {
+            return await Pokemon.findById(pokemonId);
+        },
+        pokemons: async () => {
+            return await Pokemon.find();
+        },
+
+        //for users
+        user: async (parent, {userId}) => {
+            return await User.findById(userId)
+        },
+        users: async () => {
+            return await User.find();
+        },
 
         //for mutations
         /*
@@ -59,10 +82,6 @@ const resolvers = {
             const user = await User.create({username, email, password, wins, losses});
             const token = signToken(user);
             return {token, user};
-        },
-        addEncounter: async (parent, {location, pokemon}) => {
-            const encounter = await Encounter.create({location, pokemon});
-            return encounter;
         }
     }
 }
