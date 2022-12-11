@@ -1,12 +1,13 @@
 const {Schema, model} = require('mongoose');
+const Leader = require('./Leader');
 
 const gameSchema = new Schema({
     title: {
         type: String,
         required: true
     },
-    encounters: [{}], //what goes here?
-    gymLeaders: [Leaders]
+    encounters: [String], //what goes here?
+    gymLeaders: [Leader.schema]
 });
 
 const Game = model('Game', gameSchema);
