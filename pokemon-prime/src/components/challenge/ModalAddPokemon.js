@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-// import Pokeball from '../../images/pokeball.png'
-
+import { Query } from '@favware/graphql-pokemon';
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -22,7 +21,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         }
     }
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
 
         if (!addPokemon) {
@@ -36,7 +35,33 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         }
 
         //call api to get pokemon info
+        // const temppokemon = await Query.getPokemon({ name: addPokemon });
+        // console.log(temppokemon);
+
+        // const pokemon = await
+        fetch('https://graphqlpokemon.favware.tech/v7', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                query: `
+                {
+                  getPokemon(pokemon: {name: "${addPokemon}"}}) {
+                      sprite
+                      species
+                  }
+                }
+              `
+            })
+        })
+            .catch((err) => console.log(err))
+            .then((res) => res.json())
+            .then((json) => console.log(json.data));
+
         //add pokemon to player1Caught
+
+
         //setAddPokemon('');
 
         setPlayer1Caught([...player1Caught, {
