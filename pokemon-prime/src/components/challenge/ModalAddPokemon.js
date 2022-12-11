@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Query } from '@favware/graphql-pokemon';
+import { Query, PokemonEnum } from '@favware/graphql-pokemon';
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -38,6 +38,9 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         // const temppokemon = await Query.getPokemon({ name: addPokemon });
         // console.log(temppokemon);
 
+        // interface GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> {
+        //     data: Record<K, Omit<Query[K], '__typename'>>;
+        // }
         // const pokemon = await
         fetch('https://graphqlpokemon.favware.tech/v7', {
             method: 'POST',
@@ -47,28 +50,29 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
             body: JSON.stringify({
                 query: `
                 {
-                  getPokemon(pokemon: {name: "${addPokemon}"}}) {
-                      sprite
-                      species
-                  }
+                    getPokemon(pokemon: ${addPokemon} ) {
+                        sprite
+                        species
+                    }
                 }
-              `
+                  `
+
             })
         })
-            .catch((err) => console.log(err))
             .then((res) => res.json())
-            .then((json) => console.log(json.data));
+            .then((json) => console.log(json))
+            .catch((err) => console.log(err))
 
         //add pokemon to player1Caught
-
+        //https://graphqlpokemon.favware.tech/v7?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJAA4QDWCcES6RACg0ywKJLwBCAJRFgAHSREiAcwQpOjZkgp1FLNrS5KR4yVKIBnGngCWKBBP2GaCKCYQHL%2BlARsHRTq0gCGiT-rhvFCgACxgaDz0rKTAEADNkMBMkaUjo6PiEqBQTADcEABVXB38rAF9SogqoqqdqspAyoA
 
         //setAddPokemon('');
 
-        setPlayer1Caught([...player1Caught, {
-            id: player1Caught.length + 1,
-            species: addPokemon, nickname: nickName, type: ['fire'],
-            sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
-        }]);
+        // setPlayer1Caught([...player1Caught, {
+        //     id: player1Caught.length + 1,
+        //     species: addPokemon, nickname: nickName, type: ['fire'],
+        //     sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
+        // }]);
 
         setAddPokemon('');
         setNickName('');
