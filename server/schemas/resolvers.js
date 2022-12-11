@@ -21,6 +21,15 @@ const resolvers = {
             }
             return await Challenge.find(params).populate(game).populate(player1).populate(player2)
         },
+        //for games
+        game: async (parent, {gameId}) => {
+            return await Game.findById(gameId)
+        },
+        games: async () => {
+            return await Game.find();
+        },
+        
+
         //for mutations
         /*
         me: async (parent, args, context) => {

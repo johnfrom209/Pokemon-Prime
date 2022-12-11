@@ -18,7 +18,7 @@ const typeDefs = gql`
     type Game {
         _id: ID
         title: String!
-        encounters: [Encounter]
+        encounters: [String]
         gymLeaders: [Leader]
     }
 
@@ -81,7 +81,7 @@ const typeDefs = gql`
     type Mutation {
         addChallenge(game: ID!, player1: ID!, player2: ID, battleParty1: [ID], battleParty2: [ID], p1Caught: [ID], p2Caught: [ID], p1Graveyard: [ID], p2Graveyard: [ID]): Challenge
 
-        addGame(title: String!, encounters: [ID], gymLeaders: [ID]): Game
+        addGame(title: String!, encounters: [String], gymLeaders: [String]): Game
 
         addLeader(name: String!, type: [String], pokemonParty: [ID], maxLevel: Int, badge: String): Leader
 
