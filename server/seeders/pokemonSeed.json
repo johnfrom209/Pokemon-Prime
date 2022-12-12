@@ -1,0 +1,240 @@
+[
+    {
+        "name": "Geodude",
+        "species": "Geodude",
+        "level": 1,
+        "evolution": ["Graveler"],
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/geodude.gif",
+        "type": [
+            "Rock"
+        ],
+        "superEffective": ["Bug", "Fire", "Flying", "Ice"],
+        "weakness": ["Water", "Grass", "Fighting", "Ground", "Steel"]
+    },
+    {
+        "name": "Nosepass",
+        "species": "Nosepass",
+        "level": 1,
+        "evolution": ["Probopass"],
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/nosepass.gif",
+        "type": [
+            "Rock"
+        ],
+        "superEffective": ["Bug", "Fire", "Flying", "Ice"],
+        "weakness": ["Steel", "Fighting", "Ground", "Water", "Grass"]
+    },
+    {
+        "species": "machop",
+        "level": 1,
+        "evolution": ["Machoke"],
+        "name": "Machop",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/machop.gif",
+        "type": [
+            "Fighting"
+        ],
+        "superEffective": [ "Psychic", "Fairy"],
+        "weakness": ["Flying", "Psychic", "Fairy"]
+    },
+    {
+        "species": "makuhita",
+        "level": 1,
+        "evolution": ["Hariyama"],
+        "name": "Makuhita",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/makuhita.gif",
+        "type": [
+            "Fighting"
+        ],
+        "superEffective": [ "Psychic", "Fairy"],
+        "weakness": ["Flying", "Psychic", "Fairy"]
+    },
+    {
+        "species": "magnemite",
+        "evolution": ["Magneton"],
+        "level": 1,
+        "name": "Magnemite",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/magnemite.gif",
+        "type": [ "Electric" ],
+        "superEffective": ["Flying", "Water"],
+        "weakness": ["Ground"]
+    },
+    {
+        "species": "voltorb",
+        "evolution": ["Electrode"],
+        "level": 1,
+        "name": "Voltorb",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/voltorb.gif",
+        "type": [ "Electric" ],
+        "superEffective": [ "Flying", "Water" ],
+        "weakness": [ "Ground" ]
+    },
+    {
+        "name": "Magneton",
+        "species": "magneton",
+        "evolution": ["Magnezone"],
+        "level": 1,
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/magneton.gif",
+        "type": [ "Electric", "Steel" ],
+        "superEffective": [ "Flying", "Water", "Ice", "Rock" ],
+        "weakness": [ "Ground", "Fighting", "Fire", "Ground" ]
+    },
+    {
+        "name": "Slugma",
+        "species": "slugma",
+        "evolution": ["Magcargo"],
+        "level": 1,
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/slugma.gif",
+        "type": [ "Fire" ],
+        "superEffective": [ "Bug", "Steel", "Grass", "Ice" ],
+        "weakness": [ "Ground", "Rock", "Water" ]
+    }, 
+    {
+        "species": "numel",
+        "evolution": ["Camerupt"],
+        "level": 1,
+        "name": "Numel",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/numel.gif",
+        "type": [ "Fire", "Ground" ],
+        "superEffective": [ "Bug", "Steel", "Grass", "Ice", "Rock", "Water" ],
+        "weakness": [ "Ground", "Rock", "Water" ]
+    },
+    {
+        "species": "torkoal",
+        "evolution": [null],
+        "level": 1,
+        "name": "Torkoal",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/torkoal.gif",
+        "type": [ "Fire" ],
+        "superEffective": [ "Bug", "Steel", "Grass", "Ice" ],
+        "weakness": [ "Ground", "Rock", "Water" ]
+    },
+    {
+        "species": "slaking",
+        "evolution": [null],
+        "level": 1,
+        "name": "slaking",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/slaking.gif",
+        "type": [ "Normal" ],
+        "superEffective": [  ],
+        "weakness": [ "Fighting" ]
+    },
+    {
+        "species": "vigoroth",
+        "evolution": ["Slaking"],
+        "level": 1,
+        "name": "vigoroth",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/vigoroth.gif",
+        "type": [ "Normal" ],
+        "superEffective": [  ],
+        "weakness": [ "Fighting" ]
+    },
+    {
+        "species": "swellow",
+        "evolution": [null],
+        "level": 1,
+        "name": "swellow",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/swellow.gif",
+        "type": [ "Normal", "Flying" ],
+        "superEffective": [ "Fighting", "Bug", "Grass" ],
+        "weakness": [ "Electric", "Rock", "Ice" ]
+    },
+    {
+        "species": "pelipper",
+        "evolution": [null],
+        "level": 1,
+        "name": "pelipper",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/pelipper.gif",
+        "type": [ "Water", "Flying" ],
+        "superEffective": [ "Electric", "Rock", "Ice" ],
+        "weakness": [ "Electric", "Rock", "Ice" ]
+    },
+    {
+        "species": "altaria",
+        "evolution": [null],
+        "level": 1,
+        "name": "altaria",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/altaria.gif",
+        "type": [ "Dragon", "Flying" ],
+        "superEffective": [ "Dragon", "Fairy", "Fighting", "Bug", "Grass" ],
+        "weakness": [ "Electric", "Ice", "Rock" ]
+    },
+    {
+        "species": "skarmory",
+        "evolution": [null],
+        "level": 1,
+        "name": "skarmory",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/skarmory.gif",
+        "type": [ "Steel", "Flying" ],
+        "superEffective": [ "Fighting", "Bug", "Grass", "Fire", "Ice", "Rock" ],
+        "weakness": [ "Electric", "Rock", "Steel", "Fire", "Water" ]
+    },
+    {
+        "species": "lunatone",
+        "evolution": [null],
+        "level": 1,
+        "name": "lunatone",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/lunatone.gif",
+        "type": [ "Rock", "Psychic" ],
+        "superEffective": [ "Bug", "Dark", "Ghost", "Steel", "Fighting", "Poison" ],
+        "weakness": [ "Water", "Grass", "Dark", "Ghost" ]
+    },
+    {
+        "species": "solrock",
+        "evolution": [null],
+        "level": 1,
+        "name": "solrock",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/solrock.gif",
+        "type": [ "Rock", "Psychic" ],
+        "superEffective": [ "Bug", "Dark", "Ghost", "Steel", "Fighting", "Poison" ],
+        "weakness": [ "Water", "Grass", "Dark", "Ghost" ]
+    },
+    {
+        "species": "luvdisc",
+        "evolution": [null],
+        "level": 1,
+        "name": "luvdisc",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/luvdisc.gif",
+        "type": [ "Water" ],
+        "superEffective": [ "Fire", "Ground", "Rock" ],
+        "weakness": [ "Electric", "Grass" ]
+    },
+    {
+        "species": "whiscash",
+        "evolution": [null],
+        "level": 1,
+        "name": "whiscash",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/whiscash.gif",
+        "type": [ "Water", "Ground" ],
+        "superEffective": [ "Fire", "Ground", "Rock", "Water", "Grass", "Ice" ],
+        "weakness": [ "Electric", "Grass", "Water", "Grass", "Ice" ]
+    },
+    {
+        "species": "sealeo",
+        "evolution": [null],
+        "level": 1,
+        "name": "sealeo",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/sealeo.gif",
+        "type": [ "Ice", "Water" ],
+        "superEffective": [ "Fire", "Fighting", "Rock", "Steel" ],
+        "weakness": [ "Electric", "Grass", "Fighting", "Rock" ]
+    },
+    {
+        "species": "seaking",
+        "evolution": [null],
+        "level": 1,
+        "name": "seaking",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/seaking.gif",
+        "type": [ "Water" ],
+        "superEffective": [ "Fire", "Ground", "Rock" ],
+        "weakness": [ "Electric", "Grass" ]
+    },
+    {
+        "species": "milotic",
+        "evolution": [null],
+        "level": 1,
+        "name": "milotic",
+        "sprite": "https://play.pokemonshowdown.com/sprites/ani/milotic.gif",
+        "type": [ "Water" ],
+        "superEffective": [ "Fire", "Ground", "Rock" ],
+        "weakness": [ "Electric", "Grass" ]
+    }
+]
