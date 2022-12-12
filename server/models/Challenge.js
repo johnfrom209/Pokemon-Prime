@@ -4,7 +4,10 @@ const User = require('./User');
 const Pokemon = require('./Pokemon');
 
 const ChallengeSchema = new Schema({
-    game: Game.schema,
+    game: {
+        type: Schema.Types.ObjectId,
+        ref: 'Game',
+    },
     player1: {
         type: Schema.Types.ObjectId,
         ref: 'User',
