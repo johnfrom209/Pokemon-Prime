@@ -83,6 +83,24 @@ const resolvers = {
             //const token = signToken(user);
             return user;
         },
+        // for removing 
+        removeChallenge: async (parent, {challengeId}) => {
+            return await Challenge.findOneAndDelete({_Id: challengeId});
+        },
+        removeGame: async (parent, {gameId}) => {
+            return await Game.findOneAndDelete({_Id: gameId});
+        },
+        removeLeader: async (parent, {leaderId}) => {
+            return await Leader.findOneAndDelete({_Id: leaderId});
+        },
+        removePokemon: async (parent, {pokemonId}) => {
+            return await Pokemon.findOneAndDelete({_Id: pokemonId});
+        },
+        removeUser: async (parent, {userId}) => {
+            return await User.findOneAndDelete({_Id: userId});
+        },
+
+        
     }
 }
 
