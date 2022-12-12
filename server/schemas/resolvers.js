@@ -47,7 +47,7 @@ const resolvers = {
 
         //for users
         user: async (parent, {userId}) => {
-            return await User.findById(userId)
+            return await User.findOne({_id: userId});
         },
         users: async () => {
             return await User.find();
@@ -80,9 +80,9 @@ const resolvers = {
         },
         addUser: async (parent, {username, email, password, wins, losses}) => {
             const user = await User.create({username, email, password, wins, losses});
-            const token = signToken(user);
-            return {token, user};
-        }
+            //const token = signToken(user);
+            return user;
+        },
     }
 }
 
