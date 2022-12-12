@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Query, PokemonEnum } from '@favware/graphql-pokemon';
+
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -82,7 +82,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
     if (!openModal) return null
     return (
-        <div onClick={onClose} className='w-full h-full z-40 fixed bg-gray-500 '>
+        <div onClick={onClose} className='w-full h-full z-40 fixed bg-gray-500 opacity-50'>
             <div
                 onClick={(e) => {
                     e.stopPropagation()
@@ -90,7 +90,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 className='modalContainer w-2/4 relative '
             >
 
-                <div className='bg-gray-800 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative'>
+                <div className='bg-gray-800 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative '>
                     {/* <img src="https://play.pokemonshowdown.com/sprites/itemicons/ultra-ball.png" alt='Pokeball'></img> */}
 
                     <p onClick={onClose} className='closeBtn mt-2 absolute right-3 bg-white rounded-xl top-0'>X</p>
