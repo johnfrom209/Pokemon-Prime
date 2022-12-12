@@ -99,7 +99,16 @@ const resolvers = {
         removeUser: async (parent, {userId}) => {
             return await User.findOneAndDelete({_Id: userId});
         },
-
+        //for updating
+        updateChallenge: async (parent, args, context) => {
+            if(context.user) {
+                return await Challenge.findOneAndUpdate({_Id: context.challenges._Id}, args, {new: true});
+            }
+        },
+        updateGame: async (parent, {_Id, title }) => {
+            return await Game.findOneAndUpdate({_Id: _Id}, {title: title}, {new: true});
+          
+        },
         
     }
 }
