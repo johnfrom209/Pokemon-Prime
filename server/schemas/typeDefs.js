@@ -81,7 +81,7 @@ const typeDefs = gql`
 
         addGame(title: String!, encounters: [String], gymLeaders: [String]): Game
 
-        addLeader(name: String!, type: [String], maxLevel: Int, badge: String): Leader
+        addLeader(name: String!, type: [String], maxLevel: Int, badge: String, pokemonParty: [Pokemon]): Leader
 
         addPokemon(name: String!, species: String!, type: String!, level: Int!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
