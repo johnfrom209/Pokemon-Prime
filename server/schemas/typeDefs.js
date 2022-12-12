@@ -1,4 +1,4 @@
-const {gql} = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
@@ -25,10 +25,10 @@ const typeDefs = gql`
     type Leader {
         _id: ID
         name: String!
-        type: [String]
+        type: [String]!
+        maxLevel: Int!
+        badge: String!
         pokemonParty: [Pokemon]
-        maxLevel: Int
-        badge: String
     }
 
     type Pokemon {
@@ -40,7 +40,7 @@ const typeDefs = gql`
         superEffective: [String]
         weakness: [String]
         sprite: String
-        evolution: String
+        evolution: [String]
     }
 
     type User {
@@ -92,8 +92,6 @@ const typeDefs = gql`
         updateChallenge(_id: ID!, game: ID, player1: ID, player2: ID, battleParty1: [ID], battleParty2: [ID], p1Caught: [ID], p2Caught: [ID], p1Graveyard: [ID], p2Graveyard: [ID]): Challenge
 
         updateGame(_id: ID!, title: String, encounters: [ID], gymLeaders: [ID]): Game
-
-        updateLeader(_id: ID!, name: String, type: [String], pokemonParty: [ID], maxLevel: Int, badge: String): Leader
 
         updatePokemon(_id: ID!, name: String, species: String, type: String, level: Int, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
