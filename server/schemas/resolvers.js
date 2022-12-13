@@ -6,7 +6,7 @@ const resolvers = {
     Query: {
         //for challenges
         challenge: async (parent, {challengeId}) => {
-            return await Challenge.findById(challengeId).populate('game').populate('player1').populate('player2').populate('battleParty1').populate('battleParty2').populate('p1Caught').populate('p2Caught').populate('p1Graveyard').populate('p2Graveyard');
+            return await Challenge.findOne({_Id: challengeId}).populate('game').populate('player1').populate('player2').populate('battleParty1').populate('battleParty2').populate('p1Caught').populate('p2Caught').populate('p1Graveyard').populate('p2Graveyard');
         },
         challenges: async (parent,{game, player1, player2}) => {
             const params = {};
@@ -23,12 +23,35 @@ const resolvers = {
         },
         //for games
         game: async (parent, {gameId}) => {
-            return await Game.findById(gameId)
+            return await Game.findOne({ _Id: gameId });
         },
         games: async () => {
             return await Game.find();
         },
-        
+
+        //for leaders
+        leader: async (parent, {leaderId}) => {
+            return await Leader.findOne({_Id: leaderId});
+        },
+        leaders: async () => {
+            return await Leader.find();
+        },
+
+        //for pokemon
+        pokemon: async (parent, {pokemonId}) => {
+            return await Pokemon.findOne({_Id: pokemonId});
+        },
+        pokemons: async () => {
+            return await Pokemon.find();
+        },
+
+        //for users
+        user: async (parent, {userId}) => {
+            return await User.findOne({_Id: userId});
+        },
+        users: async () => {
+            return await User.find();
+        },
 
         //for mutations
         /*
@@ -57,13 +80,36 @@ const resolvers = {
         },
         addUser: async (parent, {username, email, password, wins, losses}) => {
             const user = await User.create({username, email, password, wins, losses});
-            const token = signToken(user);
-            return {token, user};
+            //const token = signToken(user);
+            return user;
         },
-        addEncounter: async (parent, {location, pokemon}) => {
-            const encounter = await Encounter.create({location, pokemon});
-            return encounter;
-        }
+        // for removing 
+        removeChallenge: async (parent, {challengeId}) => {
+            return await Challenge.findOneAndDelete({_Id: challengeId});
+        },
+        removeGame: async (parent, {gameId}) => {
+            return await Game.findOneAndDelete({_Id: gameId});
+        },
+        removeLeader: async (parent, {leaderId}) => {
+            return await Leader.findOneAndDelete({_Id: leaderId});
+        },
+        removePokemon: async (parent, {pokemonId}) => {
+            return await Pokemon.findOneAndDelete({_Id: pokemonId});
+        },
+        removeUser: async (parent, {userId}) => {
+            return await User.findOneAndDelete({_Id: userId});
+        },
+        //for updating
+        updateChallenge: async (parent, args, context) => {
+            if(context.user) {
+                return await Challenge.findOneAndUpdate({_Id: context.challenges._Id}, args, {new: true});
+            }
+        },
+        updateGame: async (parent, {_Id, title }) => {
+            return await Game.findOneAndUpdate({_Id: _Id}, {title: title}, {new: true});
+          
+        },
+        
     }
 }
 

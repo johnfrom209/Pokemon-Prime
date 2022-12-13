@@ -7,7 +7,10 @@ const gameSchema = new Schema({
         required: true
     },
     encounters: [String], //what goes here?
-    gymLeaders: [Leader.schema]
+    gymLeaders: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Leader'
+    }]
 });
 
 const Game = model('Game', gameSchema);

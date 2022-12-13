@@ -4,7 +4,10 @@ const User = require('./User');
 const Pokemon = require('./Pokemon');
 
 const ChallengeSchema = new Schema({
-    game: Game.schema,
+    game: {
+        type: Schema.Types.ObjectId,
+        ref: 'Game',
+    },
     player1: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -15,17 +18,35 @@ const ChallengeSchema = new Schema({
         ref: 'User'
     },
     battleParty1: {
-        type: [Pokemon.schema],
+        type: [{
+            type: Schema.Types.ObjectId, 
+            ref: 'Pokemon'
+        }],
         validate: [() => this.battleParty1.length <= 6, 'Battle party must not be more than 6 Pokemon.']
     },
     battleParty2: {
-        type: [Pokemon.schema],
+        type: [{
+            type: Schema.Types.ObjectId, 
+            ref: 'Pokemon'
+        }],
         validate: [() => this.battleParty2.length <= 6, 'Battle party must not be more than 6 Pokemon.']
     },
-    p1Caught: [Pokemon.schema],
-    p2Caught: [Pokemon.schema],
-    p1Graveyard: [Pokemon.schema],
-    p2Graveyard: [Pokemon.schema],
+    p1Caught: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'Pokemon'
+    }],
+    p2Caught: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'Pokemon'
+    }],
+    p1Graveyard: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'Pokemon'
+    }],
+    p2Graveyard: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'Pokemon'
+    }],
 });
 
 const Challenge = model('Challenge', ChallengeSchema);

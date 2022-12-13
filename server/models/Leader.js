@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const { Schema, model } = require('mongoose');
 const Pokemon = require('./Pokemon');
 
 const leaderSchema = new Schema({
@@ -12,9 +12,33 @@ const leaderSchema = new Schema({
             required: true,
         }
     ],
-    pokemonParty: {
-            type: [Pokemon.schema],
-    },
+    pokemonParty:
+        [
+            {
+                // name: {
+                //     type: String,
+                //     required: true,
+                // },
+                // sprite: {
+                //     type: String,
+                //     required: true,
+                // },
+                // type: {
+                //     type: [String],
+                //     required: true,
+                // },
+                // superEffective: {
+                //     type: [String],
+                //     required: true,
+                // },
+                // weakness: {
+                //     type: [String],
+                //     required: true,
+                // },
+                type: Schema.Types.ObjectId,
+                ref: 'Pokemon'
+            }
+        ],
     maxLevel: {
         type: Number,
         required: true,
