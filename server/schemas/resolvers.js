@@ -80,14 +80,17 @@ const resolvers = {
             return pokemon;
         },
         /* ======================= Untested ========================= */
-        addPokemonToBattleParty: async (parent, {challengeID}, context) => {
-            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$addToSet: {battleParty1: context.user._id}}, {new: true});
+        addPokemonToBattleParty: async (parent, {challengeId}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeId}, {$addToSet: {battleParty1: context.user._id}}, {new: true});
+            return challenge;
         },
-        addPokemonToGraveyard: async (parent, {challengeID}, context) => {
-            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$addToSet: {p1Graveyard: context.user._id}}, {new: true});
+        addPokemonToGraveyard: async (parent, {challengeId}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeId}, {$addToSet: {p1Graveyard: context.user._id}}, {new: true});
+            return challenge;
         },
-        addPokemonToCaught: async (parent, {challengeID}, context) => {
-            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$addToSet: {p1Caught: context.user._id}}, {new: true});
+        addPokemonToCaught: async (parent, {challengeId}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeId}, {$addToSet: {p1Caught: context.user._id}}, {new: true});
+            return challenge;
         },
         /* =========================================================== */
         addUser: async (parent, {username, email, password, wins, losses}) => {
@@ -111,17 +114,20 @@ const resolvers = {
         removeUser: async (parent, {userId}) => {
             return await User.findOneAndDelete({_Id: userId});
         },
-        /* =========== Untested ============ */
-        removePokemonFromBattleParty: async (parent, {challengeID}, context) => {
-            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$pull: {battleParty1: context.user._id}}, {new: true});
+        /* =========+++++++++== Untested ========+++++++++++++++==== */
+        removePokemonFromBattleParty: async (parent, {challengeId}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeId}, {$pull: {battleParty1: context.user._id}}, {new: true});
+            return challenge;
         },
-        removePokemonFromGraveyard: async (parent, {challengeID}, context) => {
-            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$pull: {p1Graveyard: context.user._id}}, {new: true});
+        removePokemonFromGraveyard: async (parent, {challengeId}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeId}, {$pull: {p1Graveyard: context.user._id}}, {new: true});
+            return challenge;
         },
-        removePokemonFromCaught: async (parent, {challengeID}, context) => {
-            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$pull: {p1Caught: context.user._id}}, {new: true});
+        removePokemonFromCaught: async (parent, {challengeId}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeId}, {$pull: {p1Caught: context.user._id}}, {new: true});
+            return challenge;
         },
-        /* ================================= */
+        /* ================++++++++++++++++++++++++================= */
 
         //for updating
         updateChallenge: async (parent, args, context) => {
