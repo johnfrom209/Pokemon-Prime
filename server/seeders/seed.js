@@ -12,7 +12,7 @@ db.once('open', async () => {
         await Leader.deleteMany({});
         console.log('All data deleted!');
         const pokemon = await Pokemon.create(pokemonSeeds);
-        // const games = await Game.create(gameSeeds);
+        const games = await Game.create(gameSeeds);
         console.log('Games seeded!');
         process.exit(0);
 

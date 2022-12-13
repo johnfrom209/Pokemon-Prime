@@ -8,7 +8,7 @@ const resolvers = {
         challenge: async (parent, { challengeId }) => {
             return await Challenge.findOne({ _Id: challengeId }).populate('game').populate('player1').populate('player2').populate('battleParty1').populate('battleParty2').populate('p1Caught').populate('p2Caught').populate('p1Graveyard').populate('p2Graveyard');
         },
-        challenges: async (parent, { game, player1, player2 }) => {
+        challenges: async (parent, { }) => {
             return await Challenge.find().populate("game").populate("player1").populate("player2")
         },
         //for games

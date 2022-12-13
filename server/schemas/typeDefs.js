@@ -4,15 +4,15 @@ const typeDefs = gql`
 
     type Challenge {
         _id: ID
-        game: Game,
-        player1: User!,
-        player2: User,
-        battleParty1: [Pokemon],
-        battleParty2: [Pokemon],
-        p1Caught: [Pokemon],
-        p2Caught: [Pokemon],
-        p1Graveyard: [Pokemon],
-        p2Graveyard: [Pokemon],
+        game: Game
+        player1: User!
+        player2: User
+        battleParty1: [Pokemon]
+        battleParty2: [Pokemon]
+        p1Caught: [Pokemon]
+        p2Caught: [Pokemon]
+        p1Graveyard: [Pokemon]
+        p2Graveyard: [Pokemon]
     }
 
     type Game {
@@ -97,16 +97,9 @@ const typeDefs = gql`
 
         removeChallenge(_id: ID!): Challenge
 
-        removeGame(_id: ID!): Game
-
-        removeLeader(_id: ID!): Leader
-
         removePokemon(_id: ID!): Pokemon
 
-
         removeUser(_id: ID!): User
-
-
     }
 `
 
