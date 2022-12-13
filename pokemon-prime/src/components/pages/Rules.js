@@ -2,9 +2,9 @@ import React from "react";
 //rules page
 export default function Rules() {
   return (
-   
-<body className=" bg-blue-400">
-    <div className="flex justify-center place-content-center bg-blue-400 text-blue-1000  text-xl font-serif">
+   <div className=" bg-blue-400">
+
+    <div className="flex justify-center place-content-center bg-blue-400 text-blue-900  text-xl font-serif">
       <h1 className="text-2xl text-red-600 pb-8">Rules</h1>
       <div className="pt-8">
       <ul>
@@ -19,6 +19,6 @@ export default function Rules() {
       </ul>
       </div>
     </div>
-    </body>
+    </div>
   );
 }

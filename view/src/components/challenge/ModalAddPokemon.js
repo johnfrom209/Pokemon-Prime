@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-// import { useMutation } from '@apollo/client';
-import { Mutation_AddPokemon } from '../../utils/mutations';
-
+import { Query, PokemonEnum } from '@favware/graphql-pokemon';
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -56,26 +54,25 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         sprite
                         species
                     }
-                }`
+                }
+                  `
+
             })
         })
-            .then((res) => {
-                res.json()
-                //send this to player1Caught in db and state
-
-
-
-                // setPlayer1Caught([...player1Caught, {
-                //     id: player1Caught.length + 1,
-                //     species: res.species, nickname: nickName, type: [res.type],
-                //     sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
-                // }]);
-            })
+            .then((res) => res.json())
             .then((json) => console.log(json))
             .catch((err) => console.log(err))
 
         //add pokemon to player1Caught
+        //https://graphqlpokemon.favware.tech/v7?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJAA4QDWCcES6RACg0ywKJLwBCAJRFgAHSREiAcwQpOjZkgp1FLNrS5KR4yVKIBnGngCWKBBP2GaCKCYQHL%2BlARsHRTq0gCGiT-rhvFCgACxgaDz0rKTAEADNkMBMkaUjo6PiEqBQTADcEABVXB38rAF9SogqoqqdqspAyoA
 
+        //setAddPokemon('');
+
+        // setPlayer1Caught([...player1Caught, {
+        //     id: player1Caught.length + 1,
+        //     species: addPokemon, nickname: nickName, type: ['fire'],
+        //     sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
+        // }]);
 
         setAddPokemon('');
         setNickName('');
@@ -85,7 +82,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
     if (!openModal) return null
     return (
-        <div onClick={onClose} className='w-full h-full z-40 fixed bg-gray-500 opacity-50'>
+        <div onClick={onClose} className='w-full h-full z-40 fixed bg-gray-500 '>
             <div
                 onClick={(e) => {
                     e.stopPropagation()
@@ -93,7 +90,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 className='modalContainer w-2/4 relative '
             >
 
-                <div className='bg-gray-800 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative '>
+                <div className='bg-gray-800 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative'>
                     {/* <img src="https://play.pokemonshowdown.com/sprites/itemicons/ultra-ball.png" alt='Pokeball'></img> */}
 
                     <p onClick={onClose} className='closeBtn mt-2 absolute right-3 bg-white rounded-xl top-0'>X</p>

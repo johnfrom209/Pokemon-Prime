@@ -1,7 +1,7 @@
 import "./css/index.css";
 import React from "react";
 
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/pages/LandingPage";
 
 // import Challenge from "./components/challenge/Challenge";
 
@@ -17,7 +17,6 @@ function App() {
       <LandingPage />
       {/* <Challenge /> */}
       {/* </DndProvider> */}
-
     </div>
   );
 }
