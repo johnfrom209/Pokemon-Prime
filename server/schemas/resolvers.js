@@ -111,6 +111,18 @@ const resolvers = {
         removeUser: async (parent, {userId}) => {
             return await User.findOneAndDelete({_Id: userId});
         },
+        /* =========== Untested ============ */
+        removePokemonFromBattleParty: async (parent, {challengeID}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$pull: {battleParty1: context.user._id}}, {new: true});
+        },
+        removePokemonFromGraveyard: async (parent, {challengeID}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$pull: {p1Graveyard: context.user._id}}, {new: true});
+        },
+        removePokemonFromCaught: async (parent, {challengeID}, context) => {
+            const challenge = await Challenge.findOneAndUpdate({_Id: challengeID}, {$pull: {p1Caught: context.user._id}}, {new: true});
+        },
+        /* ================================= */
+
         //for updating
         updateChallenge: async (parent, args, context) => {
             if(context.user) {

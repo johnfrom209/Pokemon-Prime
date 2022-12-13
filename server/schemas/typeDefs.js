@@ -113,6 +113,12 @@ const typeDefs = gql`
 
         removePokemon(_id: ID!): Pokemon
 
+        removePokemonFromBattleParty(challengeId: ID!, battleParty1: [Pokemon]): Challenge
+
+        removePokemonFromCaught(challengeId: ID!, p1Caught: [Pokemon]): Challenge
+
+        removePokemonFromGraveyard(challengeId: ID!, p1Graveyard: [Pokemon]): Challenge
+
         removeUser(_id: ID!): User
 
 
