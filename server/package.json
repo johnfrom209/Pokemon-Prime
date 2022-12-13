@@ -6,7 +6,7 @@
   "npm": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon",
+    "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"
   },
   "keywords": [],
@@ -21,5 +21,8 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

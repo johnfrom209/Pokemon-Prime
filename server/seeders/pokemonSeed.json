@@ -2,7 +2,6 @@
     {
         "name": "Geodude",
         "species": "Geodude",
-        "level": 1,
         "evolution": ["Graveler"],
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/geodude.gif",
         "type": [
@@ -14,7 +13,6 @@
     {
         "name": "Nosepass",
         "species": "Nosepass",
-        "level": 1,
         "evolution": ["Probopass"],
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/nosepass.gif",
         "type": [
@@ -25,7 +23,6 @@
     },
     {
         "species": "machop",
-        "level": 1,
         "evolution": ["Machoke"],
         "name": "Machop",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/machop.gif",
@@ -37,7 +34,6 @@
     },
     {
         "species": "makuhita",
-        "level": 1,
         "evolution": ["Hariyama"],
         "name": "Makuhita",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/makuhita.gif",
@@ -50,7 +46,6 @@
     {
         "species": "magnemite",
         "evolution": ["Magneton"],
-        "level": 1,
         "name": "Magnemite",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/magnemite.gif",
         "type": [ "Electric" ],
@@ -60,7 +55,6 @@
     {
         "species": "voltorb",
         "evolution": ["Electrode"],
-        "level": 1,
         "name": "Voltorb",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/voltorb.gif",
         "type": [ "Electric" ],
@@ -71,7 +65,6 @@
         "name": "Magneton",
         "species": "magneton",
         "evolution": ["Magnezone"],
-        "level": 1,
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/magneton.gif",
         "type": [ "Electric", "Steel" ],
         "superEffective": [ "Flying", "Water", "Ice", "Rock" ],
@@ -81,7 +74,6 @@
         "name": "Slugma",
         "species": "slugma",
         "evolution": ["Magcargo"],
-        "level": 1,
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/slugma.gif",
         "type": [ "Fire" ],
         "superEffective": [ "Bug", "Steel", "Grass", "Ice" ],
@@ -90,7 +82,6 @@
     {
         "species": "numel",
         "evolution": ["Camerupt"],
-        "level": 1,
         "name": "Numel",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/numel.gif",
         "type": [ "Fire", "Ground" ],
@@ -100,7 +91,6 @@
     {
         "species": "torkoal",
         "evolution": [null],
-        "level": 1,
         "name": "Torkoal",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/torkoal.gif",
         "type": [ "Fire" ],
@@ -110,7 +100,6 @@
     {
         "species": "slaking",
         "evolution": [null],
-        "level": 1,
         "name": "slaking",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/slaking.gif",
         "type": [ "Normal" ],
@@ -120,7 +109,6 @@
     {
         "species": "vigoroth",
         "evolution": ["Slaking"],
-        "level": 1,
         "name": "vigoroth",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/vigoroth.gif",
         "type": [ "Normal" ],
@@ -130,7 +118,6 @@
     {
         "species": "swellow",
         "evolution": [null],
-        "level": 1,
         "name": "swellow",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/swellow.gif",
         "type": [ "Normal", "Flying" ],
@@ -140,7 +127,6 @@
     {
         "species": "pelipper",
         "evolution": [null],
-        "level": 1,
         "name": "pelipper",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/pelipper.gif",
         "type": [ "Water", "Flying" ],
@@ -150,7 +136,6 @@
     {
         "species": "altaria",
         "evolution": [null],
-        "level": 1,
         "name": "altaria",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/altaria.gif",
         "type": [ "Dragon", "Flying" ],
@@ -160,7 +145,6 @@
     {
         "species": "skarmory",
         "evolution": [null],
-        "level": 1,
         "name": "skarmory",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/skarmory.gif",
         "type": [ "Steel", "Flying" ],
@@ -170,7 +154,6 @@
     {
         "species": "lunatone",
         "evolution": [null],
-        "level": 1,
         "name": "lunatone",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/lunatone.gif",
         "type": [ "Rock", "Psychic" ],
@@ -180,7 +163,6 @@
     {
         "species": "solrock",
         "evolution": [null],
-        "level": 1,
         "name": "solrock",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/solrock.gif",
         "type": [ "Rock", "Psychic" ],
@@ -190,7 +172,6 @@
     {
         "species": "luvdisc",
         "evolution": [null],
-        "level": 1,
         "name": "luvdisc",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/luvdisc.gif",
         "type": [ "Water" ],
@@ -200,7 +181,6 @@
     {
         "species": "whiscash",
         "evolution": [null],
-        "level": 1,
         "name": "whiscash",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/whiscash.gif",
         "type": [ "Water", "Ground" ],
@@ -210,7 +190,6 @@
     {
         "species": "sealeo",
         "evolution": [null],
-        "level": 1,
         "name": "sealeo",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/sealeo.gif",
         "type": [ "Ice", "Water" ],
@@ -220,7 +199,6 @@
     {
         "species": "seaking",
         "evolution": [null],
-        "level": 1,
         "name": "seaking",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/seaking.gif",
         "type": [ "Water" ],
@@ -230,7 +208,6 @@
     {
         "species": "milotic",
         "evolution": [null],
-        "level": 1,
         "name": "milotic",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/milotic.gif",
         "type": [ "Water" ],
