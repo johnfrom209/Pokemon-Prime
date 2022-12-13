@@ -87,6 +87,12 @@ const typeDefs = gql`
 
         addPokemon(name: String!, species: String!, type: String!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
+        addPokemonToBattleParty(challengeId: ID!, battleParty1: [Pokemon]): Challenge
+
+        addPokemonToCaught(challengeId: ID!, p1Caught: [Pokemon]): Challenge
+
+        addPokemonToGraveyard(challengeId: ID!, p1Graveyard: [Pokemon]): Challenge
+
         addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): User
 
 
@@ -108,6 +114,12 @@ const typeDefs = gql`
         removeLeader(_id: ID!): Leader
 
         removePokemon(_id: ID!): Pokemon
+
+        removePokemonFromBattleParty(challengeId: ID!, battleParty1: [Pokemon]): Challenge
+
+        removePokemonFromCaught(challengeId: ID!, p1Caught: [Pokemon]): Challenge
+
+        removePokemonFromGraveyard(challengeId: ID!, p1Graveyard: [Pokemon]): Challenge
 
         removeUser(_id: ID!): User
 
