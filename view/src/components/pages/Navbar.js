@@ -8,7 +8,7 @@
 //home, rules, sign in/logout
 
 import React from "react";
-import PPlogo from "../images/PP.PNG";
+import PPlogo from "../../images/PP.PNG";
 
 function Navbar({ currentPage, handlePageChange }) {
   return (

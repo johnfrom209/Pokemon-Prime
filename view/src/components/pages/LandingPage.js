@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Login from "./Login";
 import Rules from "./Rules";
-import NewChallenge from "./challenge/Challenge";
+import NewChallenge from "../challenge/Challenge";
 import SignUp from "./SignUp";
+import Footer from "./Footer";
 //landing page
 
 export default function LandingPage() {
@@ -19,7 +20,7 @@ export default function LandingPage() {
     if (currentPage === "New Challenge") {
       return <NewChallenge />;
     }
-    
+
     if (currentPage === "Sign up") {
       return <SignUp />;
     }
@@ -31,8 +32,11 @@ export default function LandingPage() {
   return (
     <div>
       <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+      <div className="flex flex-col justify-between ">
       {renderPage()}
-      
+      <Footer />
+      </div>
     </div>
+
   );
 }
