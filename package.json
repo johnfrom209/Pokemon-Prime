@@ -1,0 +1,27 @@
+{
+  "name": "pokemon-prime",
+  "version": "1.0.0",
+  "description": "Welcome to our Pokemon nuzlocke app. With our app you can track your progression in a nuzlocke solo or with a friend! We provide the gym leaders, elite four, and champion's pokemon and pokemon level. You can also enter the pokemon you catch, their name, original pokemon name, and evolution. We also have a designated spot for your KO pokemon R.I.P. let our app track your progress with your account when you log in, you can also have several nuzlockes saved!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && node server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd view && npm start\"",
+    "build": "cd view && npm run build",
+    "install": "cd view && npm install && cd ../server && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnfrom209/Pokemon-Prime.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnfrom209/Pokemon-Prime/issues"
+  },
+  "homepage": "https://github.com/johnfrom209/Pokemon-Prime#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

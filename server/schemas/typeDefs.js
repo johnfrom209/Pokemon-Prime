@@ -83,19 +83,9 @@ const typeDefs = gql`
 
         addGame(title: String!, encounters: [String], gymLeaders: [String]): Game
 
-        addLeader(name: String!, type: [String], maxLevel: Int, badge: String, pokemonParty: [Pokemon]): Leader
-
         addPokemon(name: String!, species: String!, type: String!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
-        addPokemonToBattleParty(challengeId: ID!, battleParty1: [Pokemon]): Challenge
-
-        addPokemonToCaught(challengeId: ID!, p1Caught: [Pokemon]): Challenge
-
-        addPokemonToGraveyard(challengeId: ID!, p1Graveyard: [Pokemon]): Challenge
-
         addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): User
-
-
 
         updateChallenge(_id: ID!, game: ID, player1: ID, player2: ID, battleParty1: [ID], battleParty2: [ID], p1Caught: [ID], p2Caught: [ID], p1Graveyard: [ID], p2Graveyard: [ID]): Challenge
 
@@ -105,8 +95,6 @@ const typeDefs = gql`
 
         updateUser(_id: ID!, username: String, email: String, password: String, wins: Int, losses: Int): User
 
-
-
         removeChallenge(_id: ID!): Challenge
 
         removeGame(_id: ID!): Game
@@ -115,11 +103,6 @@ const typeDefs = gql`
 
         removePokemon(_id: ID!): Pokemon
 
-        removePokemonFromBattleParty(challengeId: ID!, battleParty1: [Pokemon]): Challenge
-
-        removePokemonFromCaught(challengeId: ID!, p1Caught: [Pokemon]): Challenge
-
-        removePokemonFromGraveyard(challengeId: ID!, p1Graveyard: [Pokemon]): Challenge
 
         removeUser(_id: ID!): User
 
