@@ -47,7 +47,7 @@ function Navbar({ currentPage, handlePageChange }) {
           >
             Login
           </a>
-          {/*
+          {
           <a
             onClick={() => handlePageChange("Profile")}
             className="mr-5 hover:text-gray-900"
@@ -55,7 +55,7 @@ function Navbar({ currentPage, handlePageChange }) {
           >
             Profile
           </a>
-          <a
+          /* <a
             onClick={() => handlePageChange("SignOut")}
             className="mr-5 hover:text-gray-900"
             href="#login"

@@ -5,6 +5,7 @@ import Rules from "./Rules";
 import NewChallenge from "../challenge/Challenge";
 import SignUp from "./SignUp";
 import Footer from "./Footer";
+import Profile from "./Profile";
 //landing page
 
 export default function LandingPage() {
@@ -26,6 +27,9 @@ export default function LandingPage() {
     }
     if (currentPage === "Login") {
       return <Login />;
+    }
+    if (currentPage === "Profile") {
+      return <Profile />;
     }
   };
   const handlePageChange = (page) => setCurrentPage(page);
