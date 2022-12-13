@@ -32,7 +32,7 @@ export default function LandingPage() {
     <div>
       <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
       {renderPage()}
-      <h1>Kitty</h1>
+      
     </div>
   );
 }

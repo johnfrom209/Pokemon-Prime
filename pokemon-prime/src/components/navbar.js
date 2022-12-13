@@ -12,17 +12,12 @@ import PPlogo from "../images/PP.PNG";
 
 function Navbar({ currentPage, handlePageChange }) {
   return (
-    <header className="flex-row px-1">
+    <header className="flex-row px-1 bg-blue-900 text-white">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row">
-        <a
-          onClick={() => handlePageChange("LandingPage")}
-          className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
-          href="#landing-page"
-    
-        >
-            <img className="w-8 h-8 mr-2" src={PPlogo} alt="logo" />
-          <span className="ml-3 text-xl">Pokemon Prime</span>
-        </a>
+        <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <img className="w-10 h-10 mr-2" src={PPlogo} alt="logo" />
+          <span className="ml-3 text-xl text-white">Pokemon Prime</span>
+        </div>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <a
             onClick={() => handlePageChange("Rules")}

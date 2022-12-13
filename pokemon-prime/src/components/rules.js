@@ -2,8 +2,9 @@ import React from "react";
 //rules page
 export default function Rules() {
   return (
-    <div>
+    <div className="flex justify-center place-content-center">
       <h1>Rules</h1>
+      
       <ul>
         <li>
           1. You are only able to catch the first wild Pokemon encountered in

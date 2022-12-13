@@ -17,7 +17,7 @@ function App() {
       <LandingPage />
       {/* <Challenge /> */}
       {/* </DndProvider> */}
-      <h1>hello</h1>
+      
     </div>
   );
 }
