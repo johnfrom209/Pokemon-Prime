@@ -85,6 +85,12 @@ const typeDefs = gql`
 
         addPokemon(name: String!, species: String!, type: String!, level: Int!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
+        addPokemonToBattleParty(challengeId: ID!, battleParty1: [Pokemon]): Challenge
+
+        addPokemonToCaught(challengeId: ID!, p1Caught: [Pokemon]): Challenge
+
+        addPokemonToGraveyard(challengeId: ID!, p1Graveyard: [Pokemon]): Challenge
+
         addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): User
 
 
