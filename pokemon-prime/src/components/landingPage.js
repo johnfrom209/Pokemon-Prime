@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Login from "./Login";
-import signin from "./SignUp";
 import Rules from "./Rules";
 import NewChallenge from "./challenge/Challenge";
+import SignUp from "./SignUp";
 //landing page
-export default function landingPage() {
-  const [currentPage, setCurrentPage] = useState("Home");
+
+export default function LandingPage() {
+  const [currentPage, setCurrentPage] = useState("New Challenge");
 
   const renderPage = () => {
-    if (currentPage === "Home") {
-      return <Home />;
+    if (currentPage === "LandingPage") {
+      return <LandingPage />;
     }
     if (currentPage === "Rules") {
       return <Rules />;
@@ -18,12 +19,20 @@ export default function landingPage() {
     if (currentPage === "New Challenge") {
       return <NewChallenge />;
     }
-    if (currentPage === "Sign In") {
-      return <Login />;
+    
+    if (currentPage === "Sign up") {
+      return <SignUp />;
     }
-    if (currentPage === "Logout") {
-      return <Logout />;
+    if (currentPage === "Login") {
+      return <Login />;
     }
   };
   const handlePageChange = (page) => setCurrentPage(page);
+  return (
+    <div>
+      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+      {renderPage()}
+      <h1>Kitty</h1>
+    </div>
+  );
 }
