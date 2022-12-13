@@ -90,7 +90,7 @@ const typeDefs = gql`
 
         addPokemon(name: String!, species: String!, type: String!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
-        addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
 
         login(email: String!, password: String!): Auth
 
