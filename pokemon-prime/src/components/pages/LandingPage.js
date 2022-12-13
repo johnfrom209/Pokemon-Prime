@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Login from "./Login";
 import Rules from "./Rules";
-import NewChallenge from "./challenge/Challenge";
+import NewChallenge from "../challenge/Challenge";
 import SignUp from "./SignUp";
+import Footer from "./Footer";
 //landing page
 
 export default function LandingPage() {
@@ -19,7 +20,7 @@ export default function LandingPage() {
     if (currentPage === "New Challenge") {
       return <NewChallenge />;
     }
-    
+
     if (currentPage === "Sign up") {
       return <SignUp />;
     }
@@ -32,7 +33,8 @@ export default function LandingPage() {
     <div>
       <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
       {renderPage()}
-      
+      <Footer />
     </div>
+
   );
 }
