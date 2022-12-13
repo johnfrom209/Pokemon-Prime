@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
 import { Query, PokemonEnum } from '@favware/graphql-pokemon';
+import { useMutation } from '@apollo/client';
+import { Mutation_AddPlayer1Caught, Mutation_AddPokemon } from '../../utils/mutations';
+
+
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [addPokemon, setAddPokemon] = useState('');
     const [nickName, setNickName] = useState('');
+    const [addPokemonToDB, { error }] = useMutation(Mutation_AddPokemon);
 
 
     const handleInputChange = (e) => {
@@ -36,12 +41,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
         //call api to get pokemon info
         // const temppokemon = await Query.getPokemon({ name: addPokemon });
-        // console.log(temppokemon);
 
-        // interface GraphQLPokemonResponse<K extends keyof Omit<Query, '__typename'>> {
-        //     data: Record<K, Omit<Query[K], '__typename'>>;
-        // }
-        // const pokemon = await
         fetch('https://graphqlpokemon.favware.tech/v7', {
             method: 'POST',
             headers: {
@@ -53,18 +53,45 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     getPokemon(pokemon: ${addPokemon} ) {
                         sprite
                         species
+                        types {
+                            matchup {
+                              attacking {
+                                effectiveTypes
+                              }
+                              defending {
+                                effectiveTypes
+                              }
+                            }
+                            name
+                          }
                     }
                 }
                   `
 
             })
         })
-            .then((res) => res.json())
-            .then((json) => console.log(json))
+            // .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                //add pokemon to database
+                // addPokemonToDB({
+                //     variables: {
+                //         name: nickName,
+                //         species: data.species,
+                //         type: data.types,
+                //         superEffective: data.types.matchup.attacking.effectiveTypes,
+                //         weakness: data.types.matchup.defending.effectiveTypes,
+                //         sprite: data.sprite,
+                //         evolution: data.evolution
+                //     })
+
+            })
             .catch((err) => console.log(err))
 
+        //I need the challenge id to add the pokemon to the player's caught pokemon
+        //hardcoding for now
+        const challengeId = '6398c91a249f9066bb7d99d2';
         //add pokemon to player1Caught
-        //https://graphqlpokemon.favware.tech/v7?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJAA4QDWCcES6RACg0ywKJLwBCAJRFgAHSREiAcwQpOjZkgp1FLNrS5KR4yVKIBnGngCWKBBP2GaCKCYQHL%2BlARsHRTq0gCGiT-rhvFCgACxgaDz0rKTAEADNkMBMkaUjo6PiEqBQTADcEABVXB38rAF9SogqoqqdqspAyoA
 
         //setAddPokemon('');
 

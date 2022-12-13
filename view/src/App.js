@@ -1,22 +1,21 @@
 import "./css/index.css";
 import React from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 import LandingPage from "./components/pages/LandingPage";
 
-// import Challenge from "./components/challenge/Challenge";
-
-// drap and drop imports
-// import { DndProvider } from "react-dnd";
-// import { HTML5Backend } from "react-dnd-html5-backend";
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
   // this calls on the components
   return (
     <div className="App">
-      {/* <DndProvider backend={HTML5Backend}> */}
-      <LandingPage />
-      {/* <Challenge /> */}
-      {/* </DndProvider> */}
+      <ApolloProvider client={client}>
+        <LandingPage />
+      </ApolloProvider>
     </div>
   );
 }
