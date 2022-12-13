@@ -1,5 +1,5 @@
 import React from "react";
-import PPlogo from "../images/PP.PNG";
+import PPlogo from "../../images/PP.PNG";
 //sign up page
 export default function SignUp() {
   return (
