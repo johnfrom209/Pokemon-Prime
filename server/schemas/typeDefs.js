@@ -58,6 +58,11 @@ const typeDefs = gql`
         pokemon: Pokemon
     }
 
+    type Auth {
+        token: ID!
+        user: User
+    }
+
     type Query {
         challenge(_id: ID!): Challenge
         challenges: [Challenge]
@@ -85,7 +90,9 @@ const typeDefs = gql`
 
         addPokemon(name: String!, species: String!, type: String!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
-        addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): User
+        addUser(username: String!, email: String!, password: String!): Auth
+
+        login(email: String!, password: String!): Auth
 
         updateChallenge(_id: ID!, game: ID, player1: ID, player2: ID, battleParty1: [ID], battleParty2: [ID], p1Caught: [ID], p2Caught: [ID], p1Graveyard: [ID], p2Graveyard: [ID]): Challenge
 
