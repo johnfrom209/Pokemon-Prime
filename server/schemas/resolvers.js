@@ -88,11 +88,26 @@ const resolvers = {
         //     return challenge;
         // },
         /* =========================================================== */
-        addUser: async (parent, { username, email, password, wins, losses }) => {
-            const user = await User.create({ username, email, password, wins, losses });
-            //const token = signToken(user);
-            return user;
+        addUser: async (parent, { username, email, password}) => {
+            const user = await User.create({ username, email, password});
+            const token = signToken(user);
+            return {token, user};
         },
+        //for logging in
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({email});
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+            const correctPw = await user.isCorrectPassword(password);
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+            const token = signToken(user);
+
+            return{token, user};
+        },
+
         // for removing 
         removeChallenge: async (parent, { challengeId }) => {
             return await Challenge.findOneAndDelete({ _Id: challengeId });
