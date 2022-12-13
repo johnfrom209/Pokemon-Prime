@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+// import { useMutation } from '@apollo/client';
+import { Mutation_AddPokemon } from '../../utils/mutations';
 
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
@@ -54,25 +56,26 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         sprite
                         species
                     }
-                }
-                  `
-
+                }`
             })
         })
-            .then((res) => res.json())
+            .then((res) => {
+                res.json()
+                //send this to player1Caught in db and state
+
+
+
+                // setPlayer1Caught([...player1Caught, {
+                //     id: player1Caught.length + 1,
+                //     species: res.species, nickname: nickName, type: [res.type],
+                //     sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
+                // }]);
+            })
             .then((json) => console.log(json))
             .catch((err) => console.log(err))
 
         //add pokemon to player1Caught
-        //https://graphqlpokemon.favware.tech/v7?explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAIq6EAUAJAA4QDWCcES6RACg0ywKJLwBCAJRFgAHSREiAcwQpOjZkgp1FLNrS5KR4yVKIBnGngCWKBBP2GaCKCYQHL%2BlARsHRTq0gCGiT-rhvFCgACxgaDz0rKTAEADNkMBMkaUjo6PiEqBQTADcEABVXB38rAF9SogqoqqdqspAyoA
 
-        //setAddPokemon('');
-
-        // setPlayer1Caught([...player1Caught, {
-        //     id: player1Caught.length + 1,
-        //     species: addPokemon, nickname: nickName, type: ['fire'],
-        //     sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
-        // }]);
 
         setAddPokemon('');
         setNickName('');
