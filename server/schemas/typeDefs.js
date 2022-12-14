@@ -25,7 +25,7 @@ const typeDefs = gql`
     type Leader {
         _id: ID
         name: String!
-        type: [String]!
+        pokemonType: [String]!
         maxLevel: Int!
         badge: String!
         pokemonParty: [Pokemon]
@@ -35,8 +35,7 @@ const typeDefs = gql`
         _id: ID
         name: String!
         species: String!
-        type: String!
-        level: Int!
+        pokemonType: [String]!
         superEffective: [String]
         weakness: [String]
         sprite: String
@@ -56,6 +55,11 @@ const typeDefs = gql`
         _id: ID
         location: String!
         pokemon: Pokemon
+    }
+
+    type Auth {
+        token: ID!
+        user: User
     }
 
     type Query {
@@ -83,15 +87,17 @@ const typeDefs = gql`
 
         addGame(title: String!, encounters: [String], gymLeaders: [String]): Game
 
-        addPokemon(name: String!, species: String!, type: String!, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
+        addPokemon(name: String!, species: String!, pokemonType: [String]!, superEffective: [String], weakness: [String], sprite: String, evolution: [String]): Pokemon
 
-        addUser(username: String!, email: String!, password: String!, wins: Int, losses: Int): User
+        addUser(username: String!, email: String!, password: String!): Auth
+
+        login(email: String!, password: String!): Auth
 
         updateChallenge(_id: ID!, game: ID, player1: ID, player2: ID, battleParty1: [ID], battleParty2: [ID], p1Caught: [ID], p2Caught: [ID], p1Graveyard: [ID], p2Graveyard: [ID]): Challenge
 
         updateGame(_id: ID!, title: String, encounters: [ID], gymLeaders: [ID]): Game
 
-        updatePokemon(_id: ID!, name: String, species: String, type: String, level: Int, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
+        updatePokemon(_id: ID!, name: String, species: String, type: String, superEffective: [String], weakness: [String], sprite: String, evolution: String): Pokemon
 
         updateUser(_id: ID!, username: String, email: String, password: String, wins: Int, losses: Int): User
 

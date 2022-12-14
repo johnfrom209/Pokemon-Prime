@@ -9,22 +9,22 @@ const resolvers = {
             return await Challenge.findOne({ _Id: challengeId }).populate('game').populate('player1').populate('player2').populate('battleParty1').populate('battleParty2').populate('p1Caught').populate('p2Caught').populate('p1Graveyard').populate('p2Graveyard');
         },
         challenges: async (parent, { }) => {
-            return await Challenge.find().populate("game").populate("player1").populate("player2")
+            return await Challenge.find().populate("game").populate("player1").populate("player2").populate("p1Caught")
         },
         //for games
         game: async (parent, { gameId }) => {
-            return await Game.findOne({ _Id: gameId });
+            return await Game.findOne({ _Id: gameId }).populate("gymLeaders");
         },
         games: async () => {
-            return await Game.find();
+            return await Game.find().populate("gymLeaders");
         },
 
         //for leaders
         leader: async (parent, { leaderId }) => {
-            return await Leader.findOne({ _Id: leaderId });
+            return await Leader.findOne({ _Id: leaderId }).populate("pokemonParty");
         },
         leaders: async () => {
-            return await Leader.find();
+            return await Leader.find().populate("pokemonParty");
         },
 
         //for pokemon
@@ -62,16 +62,16 @@ const resolvers = {
         },
         addPlayer1Caught: async (parent, { challengeId, pokemonId }) => {
             const challenge = await Challenge.findOneAndUpdate(
-                { _id: challengeId }, { $push: { p1Caught: pokemonId } }, { new: true }
+                { _id: challengeId }, { $addToSet: { p1Caught: pokemonId } }, { new: true }
             );
             return challenge;
         },
-        // addLeader: async (parent, { name, type, pokemonParty, maxLevel, badge }) => {
-        //     const leader = await Leader.create({ name, type, pokemonParty, maxLevel, badge });
+        // addLeader: async (parent, { name, pokemonType, pokemonParty, maxLevel, badge }) => {
+        //     const leader = await Leader.create({ name, pokemonType, pokemonParty, maxLevel, badge });
         //     return leader;
         // },
-        addPokemon: async (parent, { name, species, type, superEffective, weakness, sprite, evolution }) => {
-            const pokemon = await Pokemon.create({ name, species, type, level, superEffective, weakness, sprite, evolution });
+        addPokemon: async (parent, { name, species, pokemonType, superEffective, weakness, sprite, evolution }) => {
+            const pokemon = await Pokemon.create({ name, species, pokemonType, superEffective, weakness, sprite, evolution });
             return pokemon;
         },
         /* ======================= Untested ========================= */
@@ -88,11 +88,26 @@ const resolvers = {
         //     return challenge;
         // },
         /* =========================================================== */
-        addUser: async (parent, { username, email, password, wins, losses }) => {
-            const user = await User.create({ username, email, password, wins, losses });
-            //const token = signToken(user);
-            return user;
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
+            const token = signToken(user);
+            return { token, user };
         },
+        //for logging in
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+            if (!user) {
+                throw new AuthenticationError('No user found with this email address');
+            }
+            const correctPw = await user.isCorrectPassword(password);
+            if (!correctPw) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
+            const token = signToken(user);
+
+            return { token, user };
+        },
+
         // for removing 
         removeChallenge: async (parent, { challengeId }) => {
             return await Challenge.findOneAndDelete({ _Id: challengeId });

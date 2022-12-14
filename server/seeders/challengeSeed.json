@@ -1,0 +1,13 @@
+[
+    {
+        "game": {},
+        "player1": "",
+        "player2": "",
+        "p1Caught": [],
+        "p2Caught": [],
+        "p2Graveyard": [],
+        "p1Graveyard": [],
+        "battleParty1": [],
+        "battleParty2": []
+    }
+]

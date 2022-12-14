@@ -1,6 +1,8 @@
 import React from "react";
 import PPlogo from "../../images/PP.PNG";
 //login page
+//make graphql requst; fetch post; key to login store in sessionStore or LocalStorage => key stored and any request 
+//any request is attached to the header
 export default function login() {
   return (
     <section class="bg-gray-50 dark:bg-gray-900">
