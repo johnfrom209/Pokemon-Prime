@@ -43,7 +43,6 @@
     ]
   },
   "devDependencies": {
-    "@favware/graphql-pokemon": "^7.0.9",
     "tailwindcss": "^3.2.4"
   }
 }
