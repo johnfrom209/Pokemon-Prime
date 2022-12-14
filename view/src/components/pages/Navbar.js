@@ -27,7 +27,7 @@ function Navbar() {
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
-          {!Auth.loggedIn() ? (
+          {Auth.loggedIn() ? (
             <>
               <Link
                 to='/'
@@ -74,12 +74,12 @@ function Navbar() {
               >
                 New Challenge
               </Link>
-              {/* <Link
+              <Link
                 to='/profile'
                 className="mr-5 hover:text-gray-900"
               >
                 Profile
-              </Link> */}
+              </Link>
               <a
                 onClick={() => {logout()}}
                 className="mr-5 hover:text-gray-900"
