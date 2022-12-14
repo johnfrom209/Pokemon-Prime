@@ -22,6 +22,7 @@ const pokemonSchema = new Schema({
     },
     evolution: {
         type: [String],
+        required: false
     },
 });
 

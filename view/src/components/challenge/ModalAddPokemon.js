@@ -74,24 +74,35 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 })
             });
 
-            const { data } = await pokemonData.json();
+            // console.log("This is PokemonData", pokemonData.status);
             // console.log(data.getPokemon.types[0].matchup.attacking.effectiveTypes);
-            console.log(data.getPokemon);
 
-            // add pokemon to database
-            addPokemonToDB({
-                variables: {
-                    name: nickName,
-                    species: data.getPokemon.species,
-                    evolution: data.getPokemon.evolutions[0].species,
-                    sprite: data.getPokemon.sprite,
-                    pokemonType: data.getPokemon.types[0].name,
-                    superEffective: data.getPokemon.types[0].matchup.attacking.effectiveTypes,
-                    weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
+            if (pokemonData.status !== 400) {
+                const { data } = await pokemonData.json();
+
+                let evo = "";
+                console.log(data.getPokemon);
+                if (data.getPokemon.evolutions) {
+                    evo = data.getPokemon.evolutions[0].species;
                 }
-            });
-
-
+                // add pokemon to database
+                let newId = await addPokemonToDB({
+                    variables: {
+                        name: nickName,
+                        species: data.getPokemon.species,
+                        evolution: evo,
+                        sprite: data.getPokemon.sprite,
+                        pokemonType: data.getPokemon.types[0].name,
+                        superEffective: data.getPokemon.types[0].matchup.attacking.effectiveTypes,
+                        weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
+                    }
+                });
+                console.log("ID: ", newId);
+                console.log("____ID: ", newId.data.addPokemon._id);
+            }
+            else {
+                setErrorMessage('Species not found');
+            }
         }
         catch (err) {
             console.log(err);

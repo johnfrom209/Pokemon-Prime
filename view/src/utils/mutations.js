@@ -14,6 +14,7 @@ import { gql } from '@apollo/client';
 export const Mutation_AddPokemon = gql`
 mutation addPokemon($name: String!, $species: String!, $pokemonType: [String]!, $superEffective: [String]!, $weakness: [String]!, $sprite: String!, $evolution: [String]!) {
     addPokemon(name: $name, species: $species, pokemonType: $pokemonType, superEffective: $superEffective, weakness: $weakness, sprite: $sprite, evolution: $evolution) {
+        _id
         name
         species
         pokemonType
