@@ -76,9 +76,7 @@ export const Mutation_AddPokemon = gql`
 export const Mutation_AddPlayer1Caught = gql`
   mutation addPlayer1Caught($challengeId: ID!, $pokemonId: ID!) {
     addPlayer1Caught(challengeId: $challengeId, pokemonId: $pokemonId) {
-      challenge {
-        player1Caught
-      }
+        _id
     }
   }
 `;

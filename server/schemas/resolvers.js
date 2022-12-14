@@ -9,14 +9,14 @@ const resolvers = {
             return await Challenge.findOne({ _Id: challengeId }).populate('game').populate('player1').populate('player2').populate('battleParty1').populate('battleParty2').populate('p1Caught').populate('p2Caught').populate('p1Graveyard').populate('p2Graveyard');
         },
         challenges: async (parent, { }) => {
-            return await Challenge.find().populate("game").populate("player1").populate("player2")
+            return await Challenge.find().populate("game").populate("player1").populate("player2").populate("p1Caught")
         },
         //for games
         game: async (parent, { gameId }) => {
-            return await Game.findOne({ _Id: gameId });
+            return await Game.findOne({ _Id: gameId }).populate("gymLeaders");
         },
         games: async () => {
-            return await Game.find();
+            return await Game.find().populate("gymLeaders");
         },
 
         //for leaders
@@ -62,7 +62,7 @@ const resolvers = {
         },
         addPlayer1Caught: async (parent, { challengeId, pokemonId }) => {
             const challenge = await Challenge.findOneAndUpdate(
-                { _id: challengeId }, { $push: { p1Caught: pokemonId } }, { new: true }
+                { _id: challengeId }, { $addToSet: { p1Caught: pokemonId } }, { new: true }
             );
             return challenge;
         },

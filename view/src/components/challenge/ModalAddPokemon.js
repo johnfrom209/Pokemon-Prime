@@ -10,6 +10,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     const [addPokemon, setAddPokemon] = useState('');
     const [nickName, setNickName] = useState('');
     const [addPokemonToDB, { error }] = useMutation(Mutation_AddPokemon);
+    const [catchingP1, { error2 }] = useMutation(Mutation_AddPlayer1Caught);
 
 
     const handleInputChange = (e) => {
@@ -98,15 +99,23 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     }
                 });
                 // console.log("ID: ", newId);
-                console.log("____ID: ", newId.data.addPokemon._id);
+                // console.log("____ID: ", newId.data.addPokemon._id);
 
                 //add pokemon to player's caught pokemon
-                await Mutation_AddPlayer1Caught({
+                await catchingP1({
                     variables: {
-
+                        challengeId: '639978e80b32945960b8729e',
                         pokemonId: newId.data.addPokemon._id
                     }
                 });
+
+                setPlayer1Caught([...player1Caught, {
+                    id: newId.data.addPokemon._id,
+                    nickName: nickName,
+                    species: addPokemon,
+                    type: data.getPokemon.types[0].name,
+                    sprite: data.getPokemon.sprite,
+                }]);
             }
             else {
                 setErrorMessage('Species not found');
@@ -116,38 +125,9 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
             console.log(err);
         }
 
-
-
-        // .then((res) => res.json())
-        // .then((data) => {
-        //     console.log(data)
-        //add pokemon to database
-        // addPokemonToDB({
-        //     variables: {
-        //         name: nickName,
-        //         species: data.species,
-        //         type: data.types,
-        //         superEffective: data.types.matchup.attacking.effectiveTypes,
-        //         weakness: data.types.matchup.defending.effectiveTypes,
-        //         sprite: data.sprite,
-        //         evolution: data.evolution
-        //     })
-
-        // })
-        // .catch((err) => console.log(err))
-
         //I need the challenge id to add the pokemon to the player's caught pokemon
-        //hardcoding for now
-        const challengeId = '6398c91a249f9066bb7d99d2';
-        //add pokemon to player1Caught
 
-        //setAddPokemon('');
 
-        // setPlayer1Caught([...player1Caught, {
-        //     id: player1Caught.length + 1,
-        //     species: addPokemon, nickname: nickName, type: ['fire'],
-        //     sprite: "https://play.pokemonshowdown.com/sprites/ani/charmander.gif"
-        // }]);
 
         setAddPokemon('');
         setNickName('');
@@ -157,7 +137,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
     if (!openModal) return null
     return (
-        
+
         <div onClick={onClose} className='w-full h-full z-40 fixed bg-blue-400 '>
             <div
                 onClick={(e) => {
@@ -165,22 +145,22 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 }}
                 className='modalContainer w-2/4 relative content-center bg-blue-900 rounded-xl shadow-lg mx-auto my-20 p-4'
             >
-                    <div>
-                        <h1 className='text-blue-100 ml-5 text-4xl'>Add A Pokemon
+                <div>
+                    <h1 className='text-blue-100 ml-5 text-4xl'>Add A Pokemon
                         <button onClick={onClose} className='ml-80 text-lg inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9'>X</button>
-                        </h1>
+                    </h1>
+                </div>
+
+                {errorMessage && (
+                    <div className='pt-5 absolute -bottom-10 left-20'>
+                        <p className="error-text place-self-center text-blue-900 font-medium text-lg text-center">{errorMessage}</p>
                     </div>
-                  
-                    {errorMessage && (
-                        <div className='pt-5 absolute -bottom-10 left-20'>
-                            <p className="error-text place-self-center text-blue-900 font-medium text-lg text-center">{errorMessage}</p>
-                        </div>
-                    )}
+                )}
                 <div className='bg-blue-900 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative'>
                     {/* <img src="https://play.pokemonshowdown.com/sprites/itemicons/ultra-ball.png" alt='Pokeball'></img> */}
 
                     {/* add pokemon */}
-                   
+
                     <form className='addPokemon text-xs grid grid-cols-2 gap-4 place-content-around'>
 
                         <input
