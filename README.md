@@ -32,7 +32,7 @@ Node.js/html/CSS/Javascript/mongodb/express.js/webpack/Heroku/react
 
 [My GitHub](https://github.com/chanjeff520)
 
-[My Linkedin](https://www.linkedin.com/)
+[My Linkedin](https://www.linkedin.com/in/jefflchan/)
 
 # Jonathan Moreno
 
