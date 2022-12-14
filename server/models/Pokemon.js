@@ -9,7 +9,7 @@ const pokemonSchema = new Schema({
         type: String,
         required: true
     },
-    type: {
+    pokemonType: {
         type: [String],
         required: true
     },
@@ -22,6 +22,7 @@ const pokemonSchema = new Schema({
     },
     evolution: {
         type: [String],
+        required: false
     },
 });
 

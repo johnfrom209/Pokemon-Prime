@@ -1,16 +1,17 @@
 [
     {
-        "username" : "test",
-        "email" : "test@test.com",
-        "password" : "password",
-        "wins" : 0,
-        "losses" : 0
+        "username": "Jesse",
+        "email": "henchmen@test.com",
+        "password": "password"
     },
-    {   
-        "username" : "BadBunny",
-        "email" : "music@gmail.com",
-        "password" : "password",
-        "wins" : 0,
-        "losses" : 0
+    {
+        "username": "James",
+        "email": "henchmen1@text.com",
+        "password": "password"
+    },
+    {
+        "username": "Giovanni",
+        "email": "mew2@test.com",
+        "password": "password"
     }
 ]
