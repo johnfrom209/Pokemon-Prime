@@ -62,7 +62,7 @@ export default function Challenge() {
 
             <Modal openModal={openModal} onClose={() => setOpenModal(false)} setOpenModal={setOpenModal} setPlayer1Caught={setPlayer1Caught} player1Caught={player1Caught} />
             <div className='col-span-1 h-screen bg-indigo-500'>
-                <div className='p-2'>
+                <div className='p-2 ml-5 pl-0'>
                     <h2 className='text-lg'>Player 1</h2>
                     <h4 >Alpha Sapphire</h4>
                 </div>
@@ -91,7 +91,7 @@ export default function Challenge() {
 
             </div>
             <div className='h-screen bg-red-500'>
-                <div className='p-2 text-right'>
+                <div className='p-2 mr-5 pr-0 text-right'>
                     <h2 className='text-lg'>Player 2</h2>
                     <h4 >Omega Ruby</h4>
                 </div>

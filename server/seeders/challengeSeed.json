@@ -1,13 +1,13 @@
 [
     {
         "game": {},
-        "player1": "639946ff379cb785c76d2bec",
-        "player2": "639946ff379cb785c76d2bed",
-        "p1Caught": [{ }],
-        "p2Caught": [{ }],
-        "p2Graveyard": [{ }],
-        "p1Graveyard": [{ }],
-        "battleParty1": [{ }],
-        "battleParty2": [{ }]
+        "player1": "",
+        "player2": "",
+        "p1Caught": [],
+        "p2Caught": [],
+        "p2Graveyard": [],
+        "p1Graveyard": [],
+        "battleParty1": [],
+        "battleParty2": []
     }
 ]
