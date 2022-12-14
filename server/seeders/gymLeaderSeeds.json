@@ -1,0 +1,69 @@
+[
+        {
+            "name": "Roxanne",
+            "pokemonType": [
+                "Rock"
+            ],
+            "badge": "Stone",
+            "maxLevel": 14,
+            "pokemonParty": []
+        },
+        {
+            "name": "Brawly",
+            "pokemonType": [
+                "Fighting"
+            ],
+            "badge": "Knuckle",
+            "maxLevel": 16,
+            "pokemonParty": []
+        },
+        {
+            "name": "Wattson",
+            "pokemonType": [ "Electric"],
+            "badge": "Dynamo",
+            "maxLevel": 21,
+            "pokemonParty": []
+        },
+        {
+            "name": "Flannery",
+            "pokemonType": [ "Fire" ],
+            "badge": "Heat",
+            "maxLevel": 28,
+            "pokemonParty": []
+        },
+        {
+            "name": "Norman",
+            "pokemonType": [
+                "Normal"
+            ],
+            "badge": "Balance",
+            "maxLevel": 30,
+            "pokemonParty": []
+        },
+        {
+            "name": "Winona",
+            "pokemonType": [ "Flying" ],
+            "badge": "Feather",
+            "maxLevel": 35,
+            "pokemonParty": []
+        },
+        {
+            "name": "Tate & Liza",
+            "pokemonType": [
+                "Psychic"
+            ],
+            "badge": "Mind",
+            "maxLevel": 45,
+            "pokemonParty": []
+        },
+        {
+            "name": "Wallace",
+            "pokemonType": [
+                "Water"
+            ],
+            "badge": "Rising",
+            "maxLevel": 46,
+            "pokemonParty": []
+        }
+    
+]

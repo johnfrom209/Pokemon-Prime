@@ -6,35 +6,15 @@ const leaderSchema = new Schema({
         type: String,
         required: true,
     },
-    type: [
-        {
-            type: [String],
-            required: true,
-        }
-    ],
+    pokemonType:
+    {
+        type: [String],
+        required: true,
+    }
+    ,
     pokemonParty:
         [
             {
-                // name: {
-                //     type: String,
-                //     required: true,
-                // },
-                // sprite: {
-                //     type: String,
-                //     required: true,
-                // },
-                // type: {
-                //     type: [String],
-                //     required: true,
-                // },
-                // superEffective: {
-                //     type: [String],
-                //     required: true,
-                // },
-                // weakness: {
-                //     type: [String],
-                //     required: true,
-                // },
                 type: Schema.Types.ObjectId,
                 ref: 'Pokemon'
             }
