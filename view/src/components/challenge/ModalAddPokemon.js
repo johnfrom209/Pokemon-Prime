@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Query, PokemonEnum } from '@favware/graphql-pokemon';
+// import { Query, PokemonEnum } from '@favware/graphql-pokemon';
 import { useMutation } from '@apollo/client';
 import { Mutation_AddPlayer1Caught, Mutation_AddPokemon } from '../../utils/mutations';
 

@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Game, Leader, Pokemon, Challenge } = require('../models');
-const { signToken } = require('../utils/auth');
+const { signToken } = require('../utils/Auth');
 
 const resolvers = {
     Query: {
