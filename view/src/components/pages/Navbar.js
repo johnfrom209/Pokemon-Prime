@@ -27,7 +27,7 @@ function Navbar() {
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
-          {Auth.loggedIn() ? (
+          {!Auth.loggedIn() ? (
             <>
               <Link
                 to='/'
