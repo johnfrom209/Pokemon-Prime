@@ -22,7 +22,7 @@
         "weakness": ["Steel", "Fighting", "Ground", "Water", "Grass"]
     },
     {
-        "species": "machop",
+        "species": "Machop",
         "evolution": ["Machoke"],
         "name": "Machop",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/machop.gif",
@@ -33,7 +33,7 @@
         "weakness": ["Flying", "Psychic", "Fairy"]
     },
     {
-        "species": "makuhita",
+        "species": "Makuhita",
         "evolution": ["Hariyama"],
         "name": "Makuhita",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/makuhita.gif",
@@ -44,7 +44,7 @@
         "weakness": ["Flying", "Psychic", "Fairy"]
     },
     {
-        "species": "magnemite",
+        "species": "Magnemite",
         "evolution": ["Magneton"],
         "name": "Magnemite",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/magnemite.gif",
@@ -53,7 +53,7 @@
         "weakness": ["Ground"]
     },
     {
-        "species": "voltorb",
+        "species": "Voltorb",
         "evolution": ["Electrode"],
         "name": "Voltorb",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/voltorb.gif",
@@ -170,7 +170,7 @@
         "weakness": [ "Water", "Grass", "Dark", "Ghost" ]
     },
     {
-        "species": "luvdisc",
+        "species": "Luvdisc",
         "evolution": [null],
         "name": "luvdisc",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/luvdisc.gif",
@@ -179,7 +179,7 @@
         "weakness": [ "Electric", "Grass" ]
     },
     {
-        "species": "whiscash",
+        "species": "Whiscash",
         "evolution": [null],
         "name": "whiscash",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/whiscash.gif",
@@ -188,7 +188,7 @@
         "weakness": [ "Electric", "Grass", "Water", "Grass", "Ice" ]
     },
     {
-        "species": "sealeo",
+        "species": "Sealeo",
         "evolution": [null],
         "name": "sealeo",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/sealeo.gif",
@@ -197,7 +197,7 @@
         "weakness": [ "Electric", "Grass", "Fighting", "Rock" ]
     },
     {
-        "species": "seaking",
+        "species": "Seaking",
         "evolution": [null],
         "name": "seaking",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/seaking.gif",
@@ -206,7 +206,7 @@
         "weakness": [ "Electric", "Grass" ]
     },
     {
-        "species": "milotic",
+        "species": "Milotic",
         "evolution": [null],
         "name": "milotic",
         "sprite": "https://play.pokemonshowdown.com/sprites/ani/milotic.gif",

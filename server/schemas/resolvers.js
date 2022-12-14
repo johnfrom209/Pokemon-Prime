@@ -21,10 +21,10 @@ const resolvers = {
 
         //for leaders
         leader: async (parent, { leaderId }) => {
-            return await Leader.findOne({ _Id: leaderId });
+            return await Leader.findOne({ _Id: leaderId }).populate("pokemonParty");
         },
         leaders: async () => {
-            return await Leader.find();
+            return await Leader.find().populate("pokemonParty");
         },
 
         //for pokemon
