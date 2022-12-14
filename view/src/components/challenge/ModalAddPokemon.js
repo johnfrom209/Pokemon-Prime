@@ -25,12 +25,12 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         e.preventDefault();
 
         if (!addPokemon) {
-            setErrorMessage('Please enter a Species');
+            setErrorMessage('Please enter a Species!');
             return;
         }
 
         if (!nickName) {
-            setErrorMessage('Please enter a nickname');
+            setErrorMessage('Please enter a nickname!');
             return;
         }
 
@@ -96,16 +96,16 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         </h1>
                     </div>
                   
-                    
+                    {errorMessage && (
+                        <div className='pt-5 absolute -bottom-10 left-20'>
+                            <p className="error-text place-self-center text-blue-900 font-medium text-lg text-center">{errorMessage}</p>
+                        </div>
+                    )}
                 <div className='bg-blue-900 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative'>
                     {/* <img src="https://play.pokemonshowdown.com/sprites/itemicons/ultra-ball.png" alt='Pokeball'></img> */}
 
                     {/* add pokemon */}
-                    {errorMessage && (
-                        <div className='pt-5 absolute -bottom-10 left-20'>
-                            <p className="error-text place-self-center text-white text-center">{errorMessage}</p>
-                        </div>
-                    )}
+                   
                     <form className='addPokemon text-xs grid grid-cols-2 gap-4 place-content-around'>
 
                         <input
