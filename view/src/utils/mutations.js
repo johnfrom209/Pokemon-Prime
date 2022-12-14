@@ -19,19 +19,23 @@ export const Mutation_AddUser = gql`
       user {
         _id
         username
+        wins
+        losses
       }
     }
   }
 `;
 
 //login user
-export const Mutation_LoginUser = gql`
-  mutation loginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
+export const Mutation_Login = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
       user {
         _id
         username
+        wins
+        losses
       }
     }
   }

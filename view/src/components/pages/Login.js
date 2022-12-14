@@ -2,15 +2,16 @@ import React, {useState} from "react";
 import PPlogo from "../../images/PP.PNG";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { Mutation_LoginUser } from "../../utils/mutations";
+import { Mutation_Login } from "../../utils/mutations";
+
+import Auth from "../../utils/auth";
 
 //login page
 //make graphql requst; fetch post; key to login store in sessionStore or LocalStorage => key stored and any request
 //any request is attached to the header
 export default function Login(props) {
-
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [loginUser, { error, data }] = useMutation(Mutation_LoginUser);
+  const [loginUser, { error, data }] = useMutation(Mutation_Login);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,12 +22,13 @@ export default function Login(props) {
   }
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
     try {
       const { data } = await loginUser({
         variables: { ...formState },
       });
-      localStorage.setItem("id_token", data.loginUser.token);
-      props.history.push("/profile");
+      console.log(data);
+      Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
     }
