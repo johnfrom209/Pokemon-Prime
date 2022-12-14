@@ -97,8 +97,16 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
                     }
                 });
-                console.log("ID: ", newId);
+                // console.log("ID: ", newId);
                 console.log("____ID: ", newId.data.addPokemon._id);
+
+                //add pokemon to player's caught pokemon
+                await Mutation_AddPlayer1Caught({
+                    variables: {
+
+                        pokemonId: newId.data.addPokemon._id
+                    }
+                });
             }
             else {
                 setErrorMessage('Species not found');

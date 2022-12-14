@@ -27,11 +27,12 @@ mutation addPokemon($name: String!, $species: String!, $pokemonType: [String]!, 
 `;
 
 //need to add the mutation to add to player's caught pokemon
-// export const Mutation_AddPlayer1Caught = gql`
-// mutation addPlayer1Caught($challengeId: ID!, $pokemonId: ID!) {
-//     addPlayer1Caught(challengeId: $challengeId, pokemonId: $pokemonId) {
-//         challenge {
-//             player1Caught
-//     }
-// }
-// `;
+export const Mutation_AddPlayer1Caught = gql`
+mutation addPlayer1Caught($challengeId: ID!, $pokemonId: ID!) {
+    addPlayer1Caught(challengeId: $challengeId, pokemonId: $pokemonId) {
+        challenge {
+            player1Caught
+        }
+    }
+}
+`;

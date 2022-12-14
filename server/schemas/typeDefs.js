@@ -25,7 +25,7 @@ const typeDefs = gql`
     type Leader {
         _id: ID
         name: String!
-        type: [String]!
+        pokemonType: [String]!
         maxLevel: Int!
         badge: String!
         pokemonParty: [Pokemon]
