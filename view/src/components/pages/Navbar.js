@@ -74,12 +74,12 @@ function Navbar() {
               >
                 New Challenge
               </Link>
-              {/* <Link
+              <Link
                 to='/profile'
                 className="mr-5 hover:text-gray-900"
               >
                 Profile
-              </Link> */}
+              </Link>
               <a
                 onClick={() => {logout()}}
                 className="mr-5 hover:text-gray-900"
