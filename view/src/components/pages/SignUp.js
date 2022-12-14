@@ -1,8 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import PPlogo from "../../images/PP.PNG";
 import { Link } from "react-router-dom";
+
+import { useMutation } from "@apollo/client";
+import { Mutation_AddUser } from "../../utils/mutations";
+import Auth from "../../utils/auth";
+
 //sign up page
 export default function SignUp() {
+  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
+  const [addUser, { error, data }] = useMutation(Mutation_AddUser);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
