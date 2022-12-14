@@ -14,8 +14,7 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 
 function Navbar() {
-  const logout = (event) => {
-    event.preventDefault();
+  const logout = () => {
     Auth.logout();
   };
   return (
