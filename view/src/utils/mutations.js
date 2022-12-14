@@ -19,6 +19,8 @@ export const Mutation_AddUser = gql`
       user {
         _id
         username
+        wins
+        losses
       }
     }
   }
@@ -32,6 +34,8 @@ export const Mutation_LoginUser = gql`
       user {
         _id
         username
+        wins
+        losses
       }
     }
   }

@@ -1,10 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
 import PPlogo from "../../images/PP.PNG";
 import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { Mutation_LoginUser } from "../../utils/mutations";
+
 //login page
 //make graphql requst; fetch post; key to login store in sessionStore or LocalStorage => key stored and any request
 //any request is attached to the header
-export default function login() {
+export default function Login(props) {
+
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [loginUser, { error, data }] = useMutation(Mutation_LoginUser);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  }
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await loginUser({
+        variables: { ...formState },
+      });
+      localStorage.setItem("id_token", data.loginUser.token);
+      props.history.push("/profile");
+    } catch (e) {
+      console.error(e);
+    }
+
+    setFormState({
+      email: "",
+      password: ""
+    })
+
+  };
+
+  
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -21,7 +56,7 @@ export default function login() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleFormSubmit}>
               <div>
                 <label
                   htmlFor="email"
@@ -34,8 +69,10 @@ export default function login() {
                   name="email"
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
-                  required=""
+                  placeholder="pokemon@poki.com"
+                  required = "required"
+                  value={formState.email}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -51,7 +88,9 @@ export default function login() {
                   id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  required = "required"
+                  value={formState.password}
+                  onChange={handleChange}
                 />
               </div>
               <button
@@ -61,6 +100,10 @@ export default function login() {
                 Sign in
               </button>
             </form>
+
+            {
+            error && ( <div className="text-red-500"> {error.message} </div> )
+            }
           </div>
         </div>
       </div>
