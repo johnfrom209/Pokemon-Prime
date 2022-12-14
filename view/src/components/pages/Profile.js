@@ -6,11 +6,11 @@ import React from "react";
 export default function Profile() {
     return (
         // card for profile 
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-            <img className="w-full" src="https:tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains" />
-            <div className="px-6 py-4">
+        <div className="max-w-md w-full lg:flex rounded overflow-hidden shadow-lg">
+            <img className="w-full md:flex" src="https:tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains" />
+            <div className="px-2 py-0 bg-blue-300">
                 <div className="font-bold text-xl mb-2">{}</div>
-                <p className="text-gray-700 text-base">
+                <p className="text-white-50 text-base">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
                 </p>
             </div>
