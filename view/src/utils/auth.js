@@ -17,6 +17,7 @@ class AuthService {
         return false;
     }
     getToken() {
+        console.log("The id is: ", localStorage.getItem('id_token'));
         return localStorage.getItem('id_token');
     }
     logout() {
