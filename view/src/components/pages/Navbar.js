@@ -10,7 +10,13 @@
 import React from "react";
 import PPlogo from "../../images/PP.PNG";
 
+import Auth from "../../utils/auth";
+
 function Navbar({ currentPage, handlePageChange }) {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
   return (
     <header className="flex-row px-1 bg-blue-900 text-white">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row">
@@ -19,34 +25,6 @@ function Navbar({ currentPage, handlePageChange }) {
           <span className="ml-3 text-xl text-white">Pokemon Prime</span>
         </div>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <a
-            onClick={() => handlePageChange("Rules")}
-            className="mr-5 hover:text-gray-900"
-            href="#rules"
-          >
-            Rules
-          </a>
-          <a
-            onClick={() => handlePageChange("New Challenge")}
-            className="mr-5 hover:text-gray-900"
-            href="#new-challenge"
-          >
-            New Challenge
-          </a>
-          <a
-            onClick={() => handlePageChange("Sign up")}
-            className="mr-5 hover:text-gray-900"
-            href="#Signup"
-          >
-            Sign up
-          </a>
-          <a
-            onClick={() => handlePageChange("Login")}
-            className="mr-5 hover:text-gray-900"
-            href="#Login"
-          >
-            Login
-          </a>
           {/*
           <a
             onClick={() => handlePageChange("Profile")}
@@ -63,6 +41,55 @@ function Navbar({ currentPage, handlePageChange }) {
             Sign Out
           </a>
           */}
+          {Auth.loggedIn() ? (
+            <>
+              <a
+                onClick={() => handlePageChange("Rules")}
+                className="mr-5 hover:text-gray-900"
+                href="#rules"
+              >
+                Rules
+              </a>
+              <a
+                onClick={() => handlePageChange("Sign up")}
+                className="mr-5 hover:text-gray-900"
+                href="#Signup"
+              >
+                Sign up
+              </a>
+              <a
+                onClick={() => handlePageChange("Login")}
+                className="mr-5 hover:text-gray-900"
+                href="#Login"
+              >
+                Login
+              </a>
+            </>
+          ) : (
+            <>
+              <a
+                onClick={() => handlePageChange("New Challenge")}
+                className="mr-5 hover:text-gray-900"
+                href="#new-challenge"
+              >
+                New Challenge
+              </a>
+              <a
+                onClick={() => handlePageChange("Profile")}
+                className="mr-5 hover:text-gray-900"
+                href="#profile"
+              >
+                Profile
+              </a>
+              <a
+                onClick={() => handlePageChange("SignOut")}
+                className="mr-5 hover:text-gray-900"
+                href="#login"
+              >
+                Logout
+              </a>
+            </>
+          )}
         </nav>
       </div>
     </header>
