@@ -3,7 +3,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@ap
 import { setContext } from "@apollo/client/link/context";
 import "./css/index.css";
 
-import LandingPage from "./components/pages/LandingPage";
+import Main from "./components/pages/Main";
 
 // Construct our main GraphQL API endpoint
 const httpLink = new createHttpLink({
@@ -34,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <ApolloProvider client={client}>
-        <LandingPage />
+        <Main />
       </ApolloProvider>
     </div>
   );
