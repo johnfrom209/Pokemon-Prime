@@ -1,9 +1,9 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-const {authMiddleware} = require('./utils/Auth');
+const { authMiddleware } = require('./utils/Auth');
 
-const {typeDefs, resolvers} = require('./schemas');
+const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
@@ -18,11 +18,11 @@ const server = new ApolloServer({
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../pokemon-prime/build')));
-  }
-  
-  app.get('/', (req, res) => {
+}
+
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../pokemon-prime/build/index.html'));
-  });
+});
 
 
 // integrate our Apollo server with the Express application as middleware
