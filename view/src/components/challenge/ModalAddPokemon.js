@@ -82,18 +82,23 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
     if (!openModal) return null
     return (
-        <div onClick={onClose} className='w-full h-full z-40 fixed bg-gray-500 '>
+        
+        <div onClick={onClose} className='w-full h-full z-40 fixed bg-blue-400 '>
             <div
                 onClick={(e) => {
                     e.stopPropagation()
                 }}
-                className='modalContainer w-2/4 relative '
+                className='modalContainer w-2/4 relative content-center bg-blue-900 rounded-xl shadow-lg mx-auto my-20 p-4'
             >
-
-                <div className='bg-gray-800 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative'>
+                    <div>
+                        <h1 className='text-blue-100 ml-5 text-4xl'>Add A Pokemon
+                        <button onClick={onClose} className='ml-80 text-lg inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9'>X</button>
+                        </h1>
+                    </div>
+                  
+                    
+                <div className='bg-blue-900 h-1/4 inset-x-0 bottom-0 my-2 mt-24 rounded relative'>
                     {/* <img src="https://play.pokemonshowdown.com/sprites/itemicons/ultra-ball.png" alt='Pokeball'></img> */}
-
-                    <p onClick={onClose} className='closeBtn mt-2 absolute right-3 bg-white rounded-xl top-0'>X</p>
 
                     {/* add pokemon */}
                     {errorMessage && (
@@ -109,7 +114,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                             name='nickname'
                             onChange={handleInputChange}
                             placeholder='Nickname'
-                            className='w-2/6 p-2 text-center block mt-2 m-auto rounded'
+                            className='px-6 py-2 border-2 border-blue-600 text-blue-1000 font-medium text-lg leading-tight uppercase rounded   focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                         />
                         <input
                             type='text'
@@ -117,14 +122,14 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                             onChange={handleInputChange}
                             name='species'
                             placeholder='Species'
-                            className='w-2/6 p-2 block m-auto text-center rounded'
+                            className='px-6 py-2 border-2 border-blue-600 text-blue-1000 font-medium text-lg leading-tight uppercase rounded   focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                         />
                         <button
-                            className='bg-gray-300 p-2 rounded w-2/6 place-self-center'>
+                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'>
                             {/* put dice? to indicate a random name generation */}
                             Random</button>
                         <button
-                            className='bg-gray-300 block place-self-center w-2/6 m-auto p-2 m-2 rounded '
+                            className='px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out '
                             onClick={handleFormSubmit}
                         >Add</button>
                     </form>
