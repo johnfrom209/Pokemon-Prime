@@ -2,18 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 /* @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+*/ 
 
-
-.App {
-  font-family: "Dela Gothic One", cursive;
-} */
+/* .App {
+  font-family: "",;
+}  */
 @font-face {
-  font-family: "Light";
-  src: local("PokemonGB"),
+  font-family: "PokemonGB";
+  src: local("PokemonGB-RAeo"),
     url("../fonts/PokemonGb-RAeo.ttf") format("truetype");
 }
 body {
   margin: 0;
+  font-size: 15px;
   font-family: PokemonGB,
     sans-serif;
   -webkit-font-smoothing: antialiased;
