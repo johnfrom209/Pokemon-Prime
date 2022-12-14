@@ -19,13 +19,14 @@ function Navbar() {
     Auth.logout();
   };
   return (
-    <header className="flex-row px-1 bg-blue-900 text-white">
+    <header className="flex-row px-1 bg-blue-300 text-white">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <Link className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" to='/'>
           <img className="w-10 h-10 mr-2" src={PPlogo} alt="logo" />
           <span className="ml-3 text-xl text-white">Pokemon Prime</span>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+
           {!Auth.loggedIn() ? (
             <>
               <Link
