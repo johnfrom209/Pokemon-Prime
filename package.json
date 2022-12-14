@@ -23,5 +23,7 @@
   "homepage": "https://github.com/johnfrom209/Pokemon-Prime#readme",
   "devDependencies": {
     "concurrently": "^7.6.0"
+  },
+  "dependencies": {
   }
 }

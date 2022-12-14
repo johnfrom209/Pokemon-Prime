@@ -25,23 +25,7 @@ function Navbar({ currentPage, handlePageChange }) {
           <span className="ml-3 text-xl text-white">Pokemon Prime</span>
         </div>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          {/*
-          <a
-            onClick={() => handlePageChange("Profile")}
-            className="mr-5 hover:text-gray-900"
-            href="#profile"
-          >
-            Profile
-          </a>
-          <a
-            onClick={() => handlePageChange("SignOut")}
-            className="mr-5 hover:text-gray-900"
-            href="#login"
-          >
-            Sign Out
-          </a>
-          */}
-          {Auth.loggedIn() ? (
+          {!Auth.loggedIn() ? (
             <>
               <a
                 onClick={() => handlePageChange("Rules")}
@@ -68,6 +52,13 @@ function Navbar({ currentPage, handlePageChange }) {
           ) : (
             <>
               <a
+                onClick={() => handlePageChange("Rules")}
+                className="mr-5 hover:text-gray-900"
+                href="#rules"
+              >
+                Rules
+              </a>
+              <a
                 onClick={() => handlePageChange("New Challenge")}
                 className="mr-5 hover:text-gray-900"
                 href="#new-challenge"
@@ -82,7 +73,7 @@ function Navbar({ currentPage, handlePageChange }) {
                 Profile
               </a>
               <a
-                onClick={() => handlePageChange("SignOut")}
+                onClick={() => handlePageChange("Logout")}
                 className="mr-5 hover:text-gray-900"
                 href="#login"
               >

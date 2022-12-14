@@ -27,6 +27,12 @@ export default function LandingPage() {
     if (currentPage === "Login") {
       return <Login />;
     }
+    if (currentPage === "Logout") {
+      return <NewChallenge />;
+    }
+    // if(currentPage === "Profile") {
+    //   return <Profile />
+    // }
   };
   const handlePageChange = (page) => setCurrentPage(page);
   return (
