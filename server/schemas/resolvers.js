@@ -66,12 +66,12 @@ const resolvers = {
             );
             return challenge;
         },
-        // addLeader: async (parent, { name, type, pokemonParty, maxLevel, badge }) => {
-        //     const leader = await Leader.create({ name, type, pokemonParty, maxLevel, badge });
+        // addLeader: async (parent, { name, pokemonType, pokemonParty, maxLevel, badge }) => {
+        //     const leader = await Leader.create({ name, pokemonType, pokemonParty, maxLevel, badge });
         //     return leader;
         // },
-        addPokemon: async (parent, { name, species, type, superEffective, weakness, sprite, evolution }) => {
-            const pokemon = await Pokemon.create({ name, species, type, level, superEffective, weakness, sprite, evolution });
+        addPokemon: async (parent, { name, species, pokemonType, superEffective, weakness, sprite, evolution }) => {
+            const pokemon = await Pokemon.create({ name, species, pokemonType, superEffective, weakness, sprite, evolution });
             return pokemon;
         },
         /* ======================= Untested ========================= */
@@ -88,14 +88,14 @@ const resolvers = {
         //     return challenge;
         // },
         /* =========================================================== */
-        addUser: async (parent, { username, email, password}) => {
-            const user = await User.create({ username, email, password});
+        addUser: async (parent, { username, email, password }) => {
+            const user = await User.create({ username, email, password });
             const token = signToken(user);
-            return {token, user};
+            return { token, user };
         },
         //for logging in
         login: async (parent, { email, password }) => {
-            const user = await User.findOne({email});
+            const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('No user found with this email address');
             }
@@ -105,7 +105,7 @@ const resolvers = {
             }
             const token = signToken(user);
 
-            return{token, user};
+            return { token, user };
         },
 
         // for removing 

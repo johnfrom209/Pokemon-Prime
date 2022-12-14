@@ -41,52 +41,81 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
         //call api to get pokemon info
         // const temppokemon = await Query.getPokemon({ name: addPokemon });
+        try {
 
-        fetch('https://graphqlpokemon.favware.tech/v7', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                query: `
-                {
-                    getPokemon(pokemon: ${addPokemon} ) {
-                        sprite
+            const pokemonData = await fetch('https://graphqlpokemon.favware.tech/v7', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    query: `
+            {
+                getPokemon(pokemon: ${addPokemon} ) {
+                    sprite
+                    species
+                    evolutions {
                         species
-                        types {
-                            matchup {
-                              attacking {
-                                effectiveTypes
-                              }
-                              defending {
-                                effectiveTypes
-                              }
-                            }
-                            name
-                          }
                     }
+                    types {
+                        matchup {
+                          attacking {
+                            effectiveTypes
+                          }
+                          defending {
+                            effectiveTypes
+                          }
+                        }
+                        name
+                      }
                 }
-                  `
+            }
+              `
+                })
+            });
 
-            })
-        })
-            // .then((res) => res.json())
-            .then((data) => {
-                console.log(data)
-                //add pokemon to database
-                // addPokemonToDB({
-                //     variables: {
-                //         name: nickName,
-                //         species: data.species,
-                //         type: data.types,
-                //         superEffective: data.types.matchup.attacking.effectiveTypes,
-                //         weakness: data.types.matchup.defending.effectiveTypes,
-                //         sprite: data.sprite,
-                //         evolution: data.evolution
-                //     })
+            const { data } = await pokemonData.json();
+            // console.log(data.getPokemon.types[0].matchup.attacking.effectiveTypes);
+            console.log(data.getPokemon);
 
-            })
-            .catch((err) => console.log(err))
+            // add pokemon to database
+            addPokemonToDB({
+                variables: {
+                    name: nickName,
+                    species: data.getPokemon.species,
+                    evolution: data.getPokemon.evolutions[0].species,
+                    sprite: data.getPokemon.sprite,
+                    pokemonType: data.getPokemon.types[0].name,
+                    superEffective: data.getPokemon.types[0].matchup.attacking.effectiveTypes,
+                    weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
+                }
+            });
+
+
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+
+
+        // .then((res) => res.json())
+        // .then((data) => {
+        //     console.log(data)
+        //add pokemon to database
+        // addPokemonToDB({
+        //     variables: {
+        //         name: nickName,
+        //         species: data.species,
+        //         type: data.types,
+        //         superEffective: data.types.matchup.attacking.effectiveTypes,
+        //         weakness: data.types.matchup.defending.effectiveTypes,
+        //         sprite: data.sprite,
+        //         evolution: data.evolution
+        //     })
+
+        // })
+        // .catch((err) => console.log(err))
 
         //I need the challenge id to add the pokemon to the player's caught pokemon
         //hardcoding for now

@@ -1,14 +1,14 @@
-import "./css/index.css";
 import React from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import "./css/index.css";
 
 import LandingPage from "./components/pages/LandingPage";
 
 // Construct our main GraphQL API endpoint
 const httpLink = new createHttpLink({
   uri: "/graphql",
-  //cache: new InMemoryCache(),
+  // cache: new InMemoryCache(),
 });
 
 const authLink = setContext((_, { headers }) => {
