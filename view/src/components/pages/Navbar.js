@@ -12,7 +12,7 @@ import PPlogo from "../../images/PP.PNG";
 
 function Navbar({ currentPage, handlePageChange }) {
   return (
-    <header className="flex-row px-1 bg-blue-900 text-white">
+    <header className="flex-row px-1 bg-blue-300 text-white">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <img className="w-10 h-10 mr-2" src={PPlogo} alt="logo" />
