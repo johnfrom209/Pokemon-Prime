@@ -17,11 +17,11 @@ const server = new ApolloServer({
 /* ================= Routes to client Side not done yet ================= */
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../pokemon-prime/build')));
+    app.use(express.static(path.join(__dirname, '../view/build')));
 }
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../pokemon-prime/build/index.html'));
+    res.sendFile(path.join(__dirname, '../view/build/index.html'));
 });
 
 
