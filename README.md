@@ -2,7 +2,7 @@
 
 ## Description
 
-Welcome to our Pokemon nuzlocke app. With our app you can track your progression in a nuzlocke! You can enter the pokemon you catch, their name, and original pokemon name. We also have a designated spot for your KO pokemon, R.I.P. let our app track your progress with your account when you log in, you will have your very own profile with your wins, and losses,!
+Welcome to our Pokemon nuzlocke app. With our app you can track your progression in a nuzlocke! You can enter the pokemon you catch, their name, and original pokemon name. We also have a designated spot for your KO pokemon, R.I.P. let our app track your progress with your account when you log in, you will have your very own profile with your wins, and losses!
 
 Enjoy!
 
