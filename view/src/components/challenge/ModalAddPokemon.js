@@ -84,7 +84,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
             if (pokemonData.status !== 400) {
                 const { data } = await pokemonData.json();
                 let evo = "";
-                console.log(data.getPokemon);
+                // console.log(data.getPokemon);
                 if (data.getPokemon.evolutions) {
                     evo = data.getPokemon.evolutions[0].species;
                 }
@@ -144,7 +144,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         setNickName('');
         setErrorMessage('');
         setOpenModal(false);
-        window.location.reload();
+        // window.location.reload();
 
     }
 
