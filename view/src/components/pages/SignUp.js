@@ -112,7 +112,7 @@ export default function SignUp() {
                 Create an account
               </button>
             </form>
-            {error && ( <div className="text-red-500"> {error.message} </div> )}
+            {error && ( <div className="text-red-500"> The email or the username has been taken.</div> )}
           </div>
         </div>
       </div>
