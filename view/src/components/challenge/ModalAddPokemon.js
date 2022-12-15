@@ -20,7 +20,8 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
         const { target } = e;
         const inputType = target.name;
-        const inputValue = target.value;
+        let inputValue = target.value;
+        inputValue = inputValue.toLowerCase();
 
         if (inputType === 'species') {
             setAddPokemon(inputValue);
@@ -151,7 +152,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     // takes an object and returns a string
     const handleRandomName = (event) => {
         event.preventDefault();
-        if(nickName){
+        if (nickName) {
             setNickName('');
         }
         let randomName = uniqueNamesGenerator({ dictionaries: [adjectives, animals] });
@@ -203,7 +204,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                             className='px-6 py-2 border-2 border-blue-600 text-blue-1000 font-medium text-lg leading-tight uppercase rounded   focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                         />
                         <button
-                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out' 
+                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'
                             onClick={handleRandomName}>
                             {/* put dice? to indicate a random name generation */}
                             Random</button>
