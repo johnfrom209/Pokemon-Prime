@@ -139,6 +139,9 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     // takes an object and returns a string
     const handleRandomName = (event) => {
         event.preventDefault();
+        if(nickName){
+            setNickName('');
+        }
         let randomName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] });
         setNickName(randomName);
     }
