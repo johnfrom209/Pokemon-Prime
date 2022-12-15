@@ -23,14 +23,16 @@ var drake = dragula([document.querySelector('.player1Caught'), document.querySel
 });
 
 
+let p1name = "Player 1"
 // this is temp
 let pokemonArray = localStorage.getItem('player1Caught', JSON.stringify());
 //what is this doing?
 //the ? is a ternary operator
 //the ?? is a nullish coalescing operator
 //the ?? operator returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
+
+
 let spriteList = JSON.parse(localStorage.getItem('player1Caught')) ?? [];
-let p1name = "Player 1"
 
 
 
