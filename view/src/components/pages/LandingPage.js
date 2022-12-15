@@ -4,7 +4,7 @@ import newChallenge from "../challenge/Challenge";
 
 export default function LandingPage() {
   return (
-    <div className="self-center w-full max-w-sm p-4 bg-blue-400 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="m-5 self-center w-full max-w-sm p-4 bg-blue-400 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
       <img className="rounded-t-lg" src={PPlogo} alt="logo" />
 
       <div className=" p-5">
