@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PPlogo from "../../images/PP.PNG";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ import Auth from "../../utils/auth";
 
 //sign up page
 export default function SignUp() {
-  const [formState, setFormState] = useState({ username: "", email: "", password: ""});
+  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
   const [addUser, { error, data }] = useMutation(Mutation_AddUser);
 
   const handleChange = (event) => {
@@ -40,10 +40,10 @@ export default function SignUp() {
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <Link
           to='/'
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+          className="flex items-center mb-6 text-2xl font-semibold  dark:text-white"
         >
           <img className="w-16 h-16 mr-2" src={PPlogo} alt="logo" />
-        <span className="text-red-800">P</span>okemon <span className="text-blue-800">P</span>rime
+          <span className="text-red-800">P</span>okemon <span className="text-blue-800">P</span>rime
         </Link>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -112,7 +112,7 @@ export default function SignUp() {
                 Create an account
               </button>
             </form>
-            {error && ( <div className="text-red-500"> {error.message} </div> )}
+            {error && (<div className="text-red-500"> {error.message} </div>)}
           </div>
         </div>
       </div>
