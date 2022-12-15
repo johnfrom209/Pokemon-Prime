@@ -8,7 +8,7 @@ import Auth from "../../utils/auth";
 
 //sign up page
 export default function SignUp() {
-  const [formState, setFormState] = useState({ username: "", email: "", password: "" });
+  const [formState, setFormState] = useState({ username: "", email: "", password: ""});
   const [addUser, { error, data }] = useMutation(Mutation_AddUser);
 
   const handleChange = (event) => {
@@ -50,7 +50,7 @@ export default function SignUp() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create and account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={handleFormSubmit}>
               <div>
                 <label
                   htmlFor="username"
@@ -64,7 +64,9 @@ export default function SignUp() {
                   id="username"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="username"
-                  required=""
+                  required="required"
+                  value={formState.username}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -80,7 +82,9 @@ export default function SignUp() {
                   id="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
-                  required=""
+                  required="required"
+                  value={formState.email}
+                  onChange={handleChange}
                 />
               </div>
               <div>
@@ -96,23 +100,9 @@ export default function SignUp() {
                   id="password"
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="confirm-password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Confirm password
-                </label>
-                <input
-                  type="confirm-password"
-                  name="confirm-password"
-                  id="confirm-password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
+                  required="required"
+                  value={formState.password}
+                  onChange={handleChange}
                 />
               </div>
               <button
@@ -122,6 +112,7 @@ export default function SignUp() {
                 Create an account
               </button>
             </form>
+            {error && ( <div className="text-red-500"> {error.message} </div> )}
           </div>
         </div>
       </div>
