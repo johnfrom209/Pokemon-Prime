@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 /* @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
-*/ 
+*/
 
 /* .App {
   font-family: "",;
@@ -12,6 +12,7 @@
   src: local("PokemonGB-RAeo"),
     url("../fonts/PokemonGb-RAeo.ttf") format("truetype");
 }
+
 body {
   margin: 0;
   font-size: 15px;
@@ -24,6 +25,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.mainChallenge {
+  background-image: -webkit-linear-gradient(30deg, #0B3199 50%, #BC0000 50%);
 }
 
 .card-info>div img {

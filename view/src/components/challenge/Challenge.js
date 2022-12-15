@@ -78,26 +78,27 @@ export default function Challenge() {
     })
 
     return (
-        <div className='grid grid-cols-3'>
+        <div className='grid grid-cols-3 mainChallenge'>
 
             <Modal openModal={openModal} onClose={() => setOpenModal(false)} setOpenModal={setOpenModal} setPlayer1Caught={setPlayer1Caught} player1Caught={player1Caught} setSpriteList={spriteList} />
-            <div className='col-span-1 h-screen bg-indigo-500'>
+            <div className='col-span-1 h-screen '>
                 <div className='p-2 ml-5 pl-0'>
                     <h2 className='text-lg'>{p1name}</h2>
                     <h4 >Alpha Sapphire</h4>
                 </div>
                 {/* added class 'player1Caught' just for identification. it does nothing */}
-                <div className='bg-indigo-800 h-4/5 m-5 rounded' >
+                <div className='bg-indigo-800 h-4/5 m-5 rounded border shadow-xl shadow-black' >
                     {/* this is the contain for the Pokemon they caught */}
 
 
                     <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded'>Add Pokemon</button>
+
                     <div className='player1Caught dragula-container h-full w-full overflow-auto'>
                         {renderPlayer1Caught}
                     </div>
                 </div>
             </div>
-            <div className='h-screen bg-gray-500 '>
+            <div className='h-screen'>
 
                 <div id='drop-battleparty' className='bg-gray-800 mt-24 h-2/5 rounded'>
                     {/* Battle Party */}
@@ -105,16 +106,16 @@ export default function Challenge() {
                     </div>
 
                 </div>
-                <div className='bg-gray-800 h-1/4 my-2 rounded'>
+                <div className='bg-gray-800 h-1/4 my-2 rounded invisible'>
                     {/* Quick Ref Area */}
                 </div>
             </div>
-            <div className='h-screen bg-red-500'>
+            <div className='h-screen '>
                 <div className='p-2 mr-5 pr-0 text-right'>
                     <h2 className='text-lg'>Player 2</h2>
                     <h4 >Omega Ruby</h4>
                 </div>
-                <div className='bg-red-800 h-4/5 m-5 rounded'>
+                <div className='bg-red-800 h-4/5 m-5 rounded border border-black shadow-xl shadow-black'>
                     {/* this is the contain for the Pokemon they caught */}
                     <button className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded'>Add Pokemon</button>
                 </div>
