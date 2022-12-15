@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { Mutation_AddPlayer1Caught, Mutation_AddPokemon } from '../../utils/mutations';
 
 
+
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -11,7 +12,6 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     const [nickName, setNickName] = useState('');
     const [addPokemonToDB, { error }] = useMutation(Mutation_AddPokemon);
     const [catchingP1, { error2 }] = useMutation(Mutation_AddPlayer1Caught);
-
 
     const handleInputChange = (e) => {
 
@@ -134,6 +134,15 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         setErrorMessage('');
 
     }
+
+    //for random nickname generation
+    // takes an object and returns a string
+    // const handleRandomName = (event) => {
+    //     event.preventDefault();
+    //     setNickName(generator.generateNickname({include: ['fruits', 'animals', 'adjectives', 'weather', 'flowers', 'instruments'], suffixLength: 2, numberOfWords: 1, separator: ''}));
+    // }
+
+    
 
     if (!openModal) return null
     return (
