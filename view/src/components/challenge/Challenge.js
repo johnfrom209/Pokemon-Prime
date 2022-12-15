@@ -63,19 +63,24 @@ export default function Challenge() {
             // return err;
         });
     }
+    const [player1Caught, setPlayer1Caught] = useState(spriteList);
 
     useEffect(() => {
         addPlayerChallenge();
     }, []);
 
+    useEffect(() => {
+        //reload the page when a pokemon is added
+        renderPlayer1Caught();
+    }, [player1Caught]);
+
 
     // const [battleparty, setBattleparty] = useState([]);
     // const [graveyard, setGraveyard] = useState([]);
 
-    const [player1Caught, setPlayer1Caught] = useState(spriteList);
     const [openModal, setOpenModal] = useState(false);
 
-    const renderPlayer1Caught = player1Caught.map((pokemon) => {
+    const renderPlayer1Caught = () => player1Caught.map((pokemon) => {
         return <AddPokemon key={pokemon.id} pokemon={pokemon} />
     })
 
@@ -96,7 +101,7 @@ export default function Challenge() {
                     <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded'>Add Pokemon</button>
 
                     <div className='player1Caught dragula-container h-full w-full overflow-auto'>
-                        {renderPlayer1Caught}
+                        {renderPlayer1Caught()}
                     </div>
                 </div>
             </div>
