@@ -161,7 +161,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     if (!openModal) return null
     return (
 
-        <div onClick={onClose} className='w-full h-full z-40 fixed bg-blue-400 '>
+        <div onClick={onClose} className='w-full h-full z-40 fixed '>
             <div
                 onClick={(e) => {
                     e.stopPropagation()
