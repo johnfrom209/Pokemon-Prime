@@ -26,6 +26,18 @@ export const Mutation_AddUser = gql`
   }
 `;
 
+//add challenge to database
+export const Mutation_AddChallenge = gql`
+  mutation addChallenge($player1: ID!, $game: ID!) {
+    addChallenge(player1: $player1, game: $game) {
+      _id
+      player1 {
+        _id
+      }
+    }
+  }
+`;
+
 //login user
 export const Mutation_Login = gql`
   mutation login($email: String!, $password: String!) {
