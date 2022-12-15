@@ -1,5 +1,5 @@
 // profile page 
-import React,{useState} from "react";
+import React from "react";
 // import {useParams} from "react-router-dom";
 import trainer from "../../images/Brendan.png";
 import textbg from "../../images/pokemon-text.png";
@@ -7,7 +7,8 @@ import trainerF from "../../images/May.png";
 import Auth from "../../utils/auth";
 
 const Profile = () => {
-  const userData = Auth.getProfile().data.username;
+  const userData = Auth.getProfile().data;
+  
   console.log(userData)
 //   let p1name = "Player 1";
 // let pokemonArray = localStorage.getItem("player1Caught", JSON.stringify());
@@ -35,9 +36,9 @@ let spriteList = JSON.parse(localStorage.getItem("player1Caught",)) ?? [];
               <div className="text-gray-900 font-bold text-xl mb-2 text-center ">Trainer Card</div>
               <h1 className="text-gray-700 text-center text-base"> Here Are Your Stats For Your Challenge:</h1>
                 <h2 className="text-gray-700 text-center text-base">Pokemon Caught:{spriteList.length}</h2>
-                <h2 className="text-gray-700 text-center text-base">Wins:</h2>
-                <h2 className="text-gray-700 text-center text-base">Losses:</h2>
-                <h2 className= "text-gray-700 text-center text-base">Username:{`${userData}`}</h2>
+                <h2 className="text-gray-700 text-center text-base">Wins:{userData.wins}</h2>
+                <h2 className="text-gray-700 text-center text-base">Losses:{userData.losses}</h2>
+                <h2 className= "text-gray-700 text-center text-base">Username:{`${userData.username}`}</h2>
                 <h2 className= "text-gray-700 text-center text-base">Date Started:</h2>
 
             </div>
