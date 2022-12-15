@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { Mutation_AddPlayer1Caught, Mutation_AddPokemon } from '../../utils/mutations';
 
-
+import { uniqueNamesGenerator, adjectives, colors, animals } from 'unique-names-generator';
 
 export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
 
@@ -137,12 +137,11 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
     //for random nickname generation
     // takes an object and returns a string
-    // const handleRandomName = (event) => {
-    //     event.preventDefault();
-    //     setNickName(generator.generateNickname({include: ['fruits', 'animals', 'adjectives', 'weather', 'flowers', 'instruments'], suffixLength: 2, numberOfWords: 1, separator: ''}));
-    // }
-
-    
+    const handleRandomName = (event) => {
+        event.preventDefault();
+        let randomName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, animals] });
+        setNickName(randomName);
+    }
 
     if (!openModal) return null
     return (
@@ -189,7 +188,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                             className='px-6 py-2 border-2 border-blue-600 text-blue-1000 font-medium text-lg leading-tight uppercase rounded   focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                         />
                         <button
-                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'>
+                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out' onClick={handleRandomName}>
                             {/* put dice? to indicate a random name generation */}
                             Random</button>
                         <button
