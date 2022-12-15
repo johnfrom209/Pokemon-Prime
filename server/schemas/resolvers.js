@@ -11,6 +11,9 @@ const resolvers = {
         challenges: async (parent, { }) => {
             return await Challenge.find().populate("game").populate("player1").populate("player2").populate("p1Caught")
         },
+        findPlayerChallenge: async (parent, { id }) => {
+            return await Challenge.find({ player1: { _id: id } }).populate("game").populate("player1").populate("player2").populate("p1Caught")
+        },
         //for games
         game: async (parent, { gameId }) => {
             return await Game.findOne({ _Id: gameId }).populate("gymLeaders");
@@ -52,8 +55,8 @@ const resolvers = {
     },
     Mutation: {
         //for creating
-        addChallenge: async (parent, { game, player1, player2, battleParty1, battleParty2, p1Caught, p2Caught, p1Graveyard, p2Graveyard }) => {
-            const challenge = await Challenge.create({ game, player1, player2, battleParty1, battleParty2, p1Caught, p2Caught, p1Graveyard, p2Graveyard });
+        addChallenge: async (parent, { game, player1 }) => {
+            const challenge = await Challenge.create({ game, player1, });
             return challenge;
         },
         addGame: async (parent, { title, encounters, gymLeaders }) => {

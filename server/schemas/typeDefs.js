@@ -66,6 +66,8 @@ const typeDefs = gql`
         challenge(_id: ID!): Challenge
         challenges: [Challenge]
 
+        findPlayerChallenge(playerId: ID!): Challenge
+
         game(_id: ID!): Game
         games: [Game]
 
@@ -81,7 +83,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addChallenge(game: ID!, player1: ID!, player2: ID): Challenge
+        addChallenge(game: ID!, player1: ID!): Challenge
 
         addPlayer1Caught(challengeId: ID!, pokemonId: ID!): Challenge
 

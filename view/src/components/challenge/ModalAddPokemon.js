@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client';
 import { Mutation_AddPlayer1Caught, Mutation_AddPokemon } from '../../utils/mutations';
 
+import { uniqueNamesGenerator, adjectives, animals } from 'unique-names-generator';
 
-export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught }) {
+export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setPlayer1Caught, player1Caught, setSpriteList }) {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [addPokemon, setAddPokemon] = useState('');
@@ -12,14 +13,16 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     const [addPokemonToDB, { error }] = useMutation(Mutation_AddPokemon);
     const [catchingP1, { error2 }] = useMutation(Mutation_AddPlayer1Caught);
 
+    const activeChallenge = localStorage.getItem('challengeId');
+
 
     const handleInputChange = (e) => {
 
         const { target } = e;
         const inputType = target.name;
-        const inputValue = target.value;
+        let inputValue = target.value;
+        inputValue = inputValue.toLowerCase();
 
-        // Based on the input type, we set the state of either email, username, and message
         if (inputType === 'species') {
             setAddPokemon(inputValue);
         } else {
@@ -80,7 +83,6 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
             if (pokemonData.status !== 400) {
                 const { data } = await pokemonData.json();
-
                 let evo = "";
                 console.log(data.getPokemon);
                 if (data.getPokemon.evolutions) {
@@ -104,14 +106,23 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 //add pokemon to player's caught pokemon
                 await catchingP1({
                     variables: {
-                        challengeId: '639978e80b32945960b8729e',
+                        challengeId: activeChallenge,
                         pokemonId: newId.data.addPokemon._id
                     }
                 });
 
+                localStorage.setItem('player1Caught', JSON.stringify([...player1Caught, {
+                    id: newId.data.addPokemon._id,
+                    name: nickName,
+                    species: addPokemon,
+                    type: data.getPokemon.types[0].name,
+                    sprite: data.getPokemon.sprite,
+                }
+                ]));
+
                 setPlayer1Caught([...player1Caught, {
                     id: newId.data.addPokemon._id,
-                    nickName: nickName,
+                    name: nickName,
                     species: addPokemon,
                     type: data.getPokemon.types[0].name,
                     sprite: data.getPokemon.sprite,
@@ -132,13 +143,26 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
         setAddPokemon('');
         setNickName('');
         setErrorMessage('');
+        setOpenModal(false);
+        window.location.reload();
 
+    }
+
+    //for random nickname generation
+    // takes an object and returns a string
+    const handleRandomName = (event) => {
+        event.preventDefault();
+        if (nickName) {
+            setNickName('');
+        }
+        let randomName = uniqueNamesGenerator({ dictionaries: [adjectives, animals] });
+        setNickName(randomName);
     }
 
     if (!openModal) return null
     return (
 
-        <div onClick={onClose} className='w-full h-full z-40 fixed bg-blue-400 '>
+        <div onClick={onClose} className='w-full h-full z-40 fixed '>
             <div
                 onClick={(e) => {
                     e.stopPropagation()
@@ -180,7 +204,8 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                             className='px-6 py-2 border-2 border-blue-600 text-blue-1000 font-medium text-lg leading-tight uppercase rounded   focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
                         />
                         <button
-                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'>
+                            className='  px-6 py-2.5 bg-blue-600 text-white font-medium text-lg leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out'
+                            onClick={handleRandomName}>
                             {/* put dice? to indicate a random name generation */}
                             Random</button>
                         <button
