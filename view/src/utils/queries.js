@@ -1,4 +1,7 @@
+
+
 import { gql } from '@apollo/client';
+
 
 // export const Query_Pokemon = gql`
 // query getPokemon($pokemon: String!) {
@@ -14,6 +17,8 @@ import { gql } from '@apollo/client';
 //     }
 // }
 // `;
+
+
 
 
 // //query the challenges
@@ -37,3 +42,4 @@ query findPlayerChallenge($playerId: ID!) {
         }
     }
 `;
+
