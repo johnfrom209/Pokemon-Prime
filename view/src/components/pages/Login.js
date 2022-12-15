@@ -11,7 +11,7 @@ import Auth from "../../utils/auth";
 //any request is attached to the header
 export default function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [loginUser, { error, data }] = useMutation(Mutation_Login);
+  const [loginUser, { error}] = useMutation(Mutation_Login);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
