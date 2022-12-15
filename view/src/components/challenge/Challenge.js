@@ -25,7 +25,6 @@ var drake = dragula([document.querySelector('.player1Caught'), document.querySel
 
 // this is temp
 let pokemonArray = localStorage.getItem('player1Caught', JSON.stringify());
-console.log(pokemonArray);
 //what is this doing?
 //the ? is a ternary operator
 //the ?? is a nullish coalescing operator
@@ -48,14 +47,12 @@ export default function Challenge() {
         //mutate a new challenge with player id
         let gameId = "639a814037441ad6b10cdff6"
 
-        console.log("starting addChallenge");
         addChallenge({
             variables: {
                 game: gameId,
                 player1: playerToken.data._id
             }
         }).then((res) => {
-            console.log('res', res);
             const challengeId = res.data.addChallenge._id;
             localStorage.setItem('challengeId', challengeId);
             // return res;
