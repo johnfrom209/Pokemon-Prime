@@ -1,4 +1,4 @@
-// import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // export const Query_Pokemon = gql`
 // query getPokemon($pokemon: String!) {
@@ -15,3 +15,14 @@
 // }
 // `;
 
+export const QUERY_USER = gql`
+query user($username: String!) {
+    user(username: $username) {
+        _id
+        username
+        email
+        wins
+        losses
+    }
+}
+`;
