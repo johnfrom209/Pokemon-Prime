@@ -6,11 +6,11 @@ import Auth from "../../utils/auth";
 
 export default function LandingPage() {
   return (
-    <div className="m-5 h-full mb-16 self-center w-full max-w-sm p-4 bg-blue-500 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <img className="rounded-t-lg" src={PPlogo} alt="logo" />
+    <div className="m-5 h-full mb-28 self-center w-full max-w-sm p-4 bg-blue-500 border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <img className="rounded-t-lg w-fit" src={PPlogo} alt="logo" />
 
-      <div className=" p-5">
-        <p className="mb-3 font-normal text-center text-gray-700 dark:text-gray-400">
+      <div className="">
+        <p className="mb-3 font-normal text-center">
           Welcome to Pokemon Prime
         </p>
         {Auth.loggedIn() ? (

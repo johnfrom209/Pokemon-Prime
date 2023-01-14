@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue: {
+        sapp: {
           50: '#0A2672',
           100: '#030A1C',
           200: "#06184A",

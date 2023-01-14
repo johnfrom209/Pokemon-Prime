@@ -18,7 +18,7 @@ function Navbar() {
     Auth.logout();
   };
   return (
-    <header className="flex-row px-1 bg-blue-300 text-white">
+    <header className="flex-row px-1 bg-sapp-300 text-white">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row">
         <Link className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" to='/'>
           <img className="w-10 h-10 mr-2" src={PPlogo} alt="logo" />
@@ -30,25 +30,25 @@ function Navbar() {
             <>
               <Link
                 to='/'
-                className="mr-5 hover:text-gray-900"
+                className="mr-5 hover:text-sapp-500"
               >
                 Home
               </Link>
               <Link
                 to='/rules'
-                className="mr-5 hover:text-gray-900"
+                className="mr-5 hover:text-sapp-500"
               >
                 Rules
               </Link>
               <Link
                 to='/signup'
-                className="mr-5 hover:text-gray-900"
+                className="mr-5 hover:text-sapp-500"
               >
                 Sign up
               </Link>
               <Link
                 to='/login'
-                className="mr-5 hover:text-gray-900"
+                className="mr-5 hover:text-sapp-500"
               >
                 Login
               </Link>
@@ -80,7 +80,7 @@ function Navbar() {
                 Profile
               </Link>
               <a
-                onClick={() => {logout()}}
+                onClick={() => { logout() }}
                 className="mr-5 hover:text-gray-900"
                 href="#login"
               >

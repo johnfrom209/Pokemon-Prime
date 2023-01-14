@@ -15,7 +15,7 @@ export default function Main() {
     <div>
       <Router>
         <Navbar />
-        <div className="flex flex-col justify-between ">
+        <div className="flex flex-col justify-between bg-sapp-100">
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
             <Route path="/login" element={<Login />}></Route>
