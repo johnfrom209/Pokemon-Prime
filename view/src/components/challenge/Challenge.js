@@ -81,7 +81,7 @@ export default function Challenge() {
     })
 
     return (
-        <div className='grid grid-cols-3 mainChallenge'>
+        <div className='grid grid-cols-2 mainChallenge'>
 
             <Modal openModal={openModal} onClose={() => setOpenModal(false)} setOpenModal={setOpenModal} setPlayer1Caught={setPlayer1Caught} player1Caught={player1Caught} setSpriteList={spriteList} />
             <div className='col-span-1 h-screen '>
@@ -90,22 +90,22 @@ export default function Challenge() {
                     <h4 >Alpha Sapphire</h4>
                 </div>
                 {/* added class 'player1Caught' just for identification. it does nothing */}
-                <div className='bg-indigo-800 h-4/5 m-5 rounded border shadow-xl shadow-black' >
+                <div className='bg-indigo-800 h-4/5 m-5 rounded border shadow-xl shadow-black ' >
                     {/* this is for the Pokemon they caught */}
 
 
                     <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded mb-1'>Add Pokemon</button>
 
-                    <div className='player1Caught dragula-container h-full w-full overflow-auto flex'>
+                    <div className='player1Caught dragula-container h-full w-full overflow-auto flex flex-wrap gap-4'>
                         {renderPlayer1Caught()}
                     </div>
                 </div>
             </div>
-            <div className='h-screen'>
+            <div className='h-screen mr-6'>
 
                 <div id='drop-battleparty' className='bg-gray-800 mt-24 h-2/5 rounded'>
                     {/* Battle Party */}
-                    <div className='battleparty dragula-container h-full w-full grid grid-cols-6 gap-4 '>
+                    <div className='battleparty dragula-container h-full w-full overflow-auto flex flex-wrap gap-4 justify-evenly'>
                     </div>
 
                 </div>
