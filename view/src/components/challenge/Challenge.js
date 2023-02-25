@@ -25,13 +25,9 @@ var drake = dragula([document.querySelector('.player1Caught'), document.querySel
 
 let p1name = "Player 1"
 // this is temp
-let pokemonArray = localStorage.getItem('player1Caught', JSON.stringify());
-//what is this doing?
-//the ? is a ternary operator
-//the ?? is a nullish coalescing operator
+// let pokemonArray = localStorage.getItem('player1Caught', JSON.stringify());
+
 //the ?? operator returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand.
-
-
 let spriteList = JSON.parse(localStorage.getItem('player1Caught')) ?? [];
 
 
@@ -85,7 +81,7 @@ export default function Challenge() {
     })
 
     return (
-        <div className='grid grid-cols-3 mainChallenge'>
+        <div className='grid grid-cols-2 mainChallenge'>
 
             <Modal openModal={openModal} onClose={() => setOpenModal(false)} setOpenModal={setOpenModal} setPlayer1Caught={setPlayer1Caught} player1Caught={player1Caught} setSpriteList={spriteList} />
             <div className='col-span-1 h-screen '>
@@ -94,38 +90,30 @@ export default function Challenge() {
                     <h4 >Alpha Sapphire</h4>
                 </div>
                 {/* added class 'player1Caught' just for identification. it does nothing */}
-                <div className='bg-indigo-800 h-4/5 m-5 rounded border shadow-xl shadow-black' >
-                    {/* this is the contain for the Pokemon they caught */}
+                <div className='bg-indigo-800 h-4/5 m-5 rounded border shadow-xl shadow-black ' >
+                    {/* this is for the Pokemon they caught */}
 
 
-                    <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded'>Add Pokemon</button>
+                    <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded mb-1'>Add Pokemon</button>
 
-                    <div className='player1Caught dragula-container h-full w-full overflow-auto'>
+                    <div className='player1Caught dragula-container h-full w-full overflow-auto flex flex-wrap gap-4'>
                         {renderPlayer1Caught()}
                     </div>
                 </div>
             </div>
-            <div className='h-screen'>
+            <div className='h-screen mr-6'>
 
                 <div id='drop-battleparty' className='bg-gray-800 mt-24 h-2/5 rounded'>
                     {/* Battle Party */}
-                    <div className='battleparty dragula-container h-full w-full grid grid-cols-6 gap-4 '>
+                    <div className='battleparty dragula-container h-full w-full overflow-auto flex flex-wrap gap-4 justify-evenly'>
                     </div>
 
                 </div>
-                <div className='bg-gray-800 h-1/4 my-2 rounded invisible'>
-                    {/* Quick Ref Area */}
-                </div>
-            </div>
-            <div className='h-screen '>
-                <div className='p-2 mr-5 pr-0 text-right'>
-                    <h2 className='text-lg'>Player 2</h2>
-                    <h4 >Omega Ruby</h4>
-                </div>
-                <div className='bg-red-800 h-4/5 m-5 rounded border border-black shadow-xl shadow-black'>
-                    {/* this is the contain for the Pokemon they caught */}
-                    <button className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded'>Add Pokemon</button>
-                </div>
+
+                {/* <div className='bg-gray-800 h-1/4 my-2 rounded '> */}
+                {/* Quick Ref Area */}
+                {/* </div> */}
+
             </div>
 
         </div >
