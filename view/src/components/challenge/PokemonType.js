@@ -65,7 +65,6 @@ export default function PokemonType({ type }) {
         default:
             break;
     }
-    console.log("color", color);
 
     const style = {
         color: "#FFFFFF",
