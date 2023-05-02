@@ -1,4 +1,6 @@
 import React from 'react'
+import PokemonType from './PokemonType'
+
 
 export default function AddPokemon({ pokemon }) {
     return (
@@ -10,7 +12,14 @@ export default function AddPokemon({ pokemon }) {
                 <img src={pokemon.sprite} alt={`Pokemon Nicknamed ${pokemon.name} `} className="h-14 m-4 block" />
                 {pokemon.species}
                 <br />
-                {pokemon.type}
+                {/* This is checking if the pokemon.type is an array. If it is we need to map the array, so that it sends one at a time to the react component. Else it calls on the react component with its single typing */}
+                {Array.isArray(pokemon.type) ? (
+                    pokemon.type.map((type, index) => (
+                        <PokemonType key={index} type={type} />
+                    ))
+                ) : (
+                    <PokemonType type={pokemon.type} />
+                )}
 
             </div>
 

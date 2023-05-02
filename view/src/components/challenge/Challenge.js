@@ -66,7 +66,7 @@ export default function Challenge() {
     }, []);
 
     useEffect(() => {
-        //reload the page when a pokemon is added
+        //reload the page when a pokemon is added/removed
         renderPlayer1Caught();
     }, [player1Caught]);
 
