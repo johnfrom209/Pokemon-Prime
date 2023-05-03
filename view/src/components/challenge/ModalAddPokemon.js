@@ -79,14 +79,16 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
             });
 
             // console.log("This is PokemonData", pokemonData.status);
-            // console.log(data.getPokemon.types[0].matchup.attacking.effectiveTypes);
 
             if (pokemonData.status !== 400) {
                 const { data } = await pokemonData.json();
-                let evo = "";
                 // console.log(data.getPokemon);
+
+                let evo = "";
+                const typeNames = data.getPokemon.types.map((type) => type.name); // create an array of type names
+
                 if (data.getPokemon.evolutions) {
-                    evo = data.getPokemon.evolutions[0].species;
+                    evo = data.getPokemon.evolutions.map((evo) => evo.species);
                 }
                 // add pokemon to database
                 let newId = await addPokemonToDB({
@@ -95,7 +97,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         species: data.getPokemon.species,
                         evolution: evo,
                         sprite: data.getPokemon.sprite,
-                        pokemonType: data.getPokemon.types[0].name,
+                        pokemonType: typeNames,
                         superEffective: data.getPokemon.types[0].matchup.attacking.effectiveTypes,
                         weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
                     }
@@ -115,7 +117,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     id: newId.data.addPokemon._id,
                     name: nickName,
                     species: addPokemon,
-                    type: data.getPokemon.types[0].name,
+                    type: typeNames,
                     sprite: data.getPokemon.sprite,
                 }
                 ]));
@@ -124,7 +126,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     id: newId.data.addPokemon._id,
                     name: nickName,
                     species: addPokemon,
-                    type: data.getPokemon.types[0].name,
+                    type: typeNames,
                     sprite: data.getPokemon.sprite,
                 }]);
             }
