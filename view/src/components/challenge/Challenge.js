@@ -41,7 +41,6 @@ export default function Challenge() {
 
 
     const handlePokemonCardClick = (pokemon) => {
-        console.log('Clicked on pokemon:', pokemon);
         setSelectedPokemon(pokemon);
         setOpenDetailModal(true);
     };
@@ -130,7 +129,7 @@ export default function Challenge() {
 
                 {selectedPokemon && (
                     <PokemonDetail
-                        // isOpen={openDetailModal}
+                        isOpen={openDetailModal}
                         onClose={() => setSelectedPokemon(null)}
                         pokemon={selectedPokemon}
                     />

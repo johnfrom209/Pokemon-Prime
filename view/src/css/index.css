@@ -65,3 +65,11 @@ code {
   font-size: .8vw;
 
 }
+
+.scrollbarHide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  overflow: hidden;
+}

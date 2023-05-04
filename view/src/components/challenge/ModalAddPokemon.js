@@ -173,7 +173,7 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
             >
                 <div>
                     <h1 className='text-blue-100 ml-5 text-4xl'>Add A Pokemon
-                        <button onClick={onClose} className='ml-80 text-lg inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9'>X</button>
+                        <button onClick={onClose} className='absolute top-0 right-0 m-4 text-lg inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9'>X</button>
                     </h1>
                 </div>
 
