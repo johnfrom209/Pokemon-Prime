@@ -48,6 +48,11 @@ export default function PokemonDetail({ isOpen, onClose, pokemon }) {
                     Link:
                     <a href={pokemon.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition-colors duration-300"> Bulbapedia</a>
                     <br />
+                    {pokemon.evolution && pokemon.evolves > 0 && (
+                        <div>
+                            <p>Evolution level: {pokemon.evolves}</p>
+                        </div>
+                    )}
 
                     <div className="modal-footer absolute bottom-0 left-0 w-full">
                         <ul className="flex justify-center space-x-4 mb-4">
