@@ -18,6 +18,7 @@ export default function PokemonDetail({ isOpen, onClose, pokemon }) {
                     <img src={pokemon.sprite} alt={`Pokemon Nicknamed ${pokemon.name} `} className="h-8 xl:h-12 inline-flex justify-self-end pl-12 " />
                     <br />
                     {/* This is checking if the pokemon.type is an array. If it is we need to map the array, so that it sends one at a time to the react component. Else it calls on the react component with its single typing */}
+
                     {Array.isArray(pokemon.type) ? (
                         pokemon.type.map((type, index) => (
                             <PokemonType key={index} type={type} />
@@ -26,33 +27,45 @@ export default function PokemonDetail({ isOpen, onClose, pokemon }) {
                         <PokemonType type={pokemon.type} />
                     )}
                     <br />
-                    Weak:
-                    {Array.isArray(pokemon.pokemonWeak) ? (
-                        pokemon.pokemonWeak.map((type, index) => (
-                            <PokemonType key={index} type={type} />
-                        ))
-                    ) : (
-                        <PokemonType type={pokemon.type} />
-                    )}
-                    <br />
+                    <section className='py-2'>
 
-                    Resist:
-                    {Array.isArray(pokemon.pokemonResist) ? (
-                        pokemon.pokemonResist.map((type, index) => (
-                            <PokemonType key={index} type={type} />
-                        ))
-                    ) : (
-                        <PokemonType type={pokemon.type} />
-                    )}
+                        Weak:
+                        {Array.isArray(pokemon.pokemonWeak) ? (
+                            pokemon.pokemonWeak.map((type, index) => (
+                                <PokemonType key={index} type={type} />
+                            ))
+                        ) : (
+                            <PokemonType type={pokemon.type} />
+                        )}
+                        <br />
+                    </section>
+
+                    <section className='py-2'>
+
+
+                        Resist:
+                        {Array.isArray(pokemon.pokemonResist) ? (
+                            pokemon.pokemonResist.map((type, index) => (
+                                <PokemonType key={index} type={type} />
+                            ))
+                        ) : (
+                            <PokemonType type={pokemon.type} />
+                        )}
+                    </section>
                     <br />
-                    Link:
-                    <a href={pokemon.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition-colors duration-300"> Bulbapedia</a>
-                    <br />
-                    {pokemon.evolution && pokemon.evolves > 0 && (
-                        <div>
-                            <p>Evolution level: {pokemon.evolves}</p>
-                        </div>
-                    )}
+                    <section className='py-2'>
+                        Link:
+                        <a href={pokemon.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition-colors duration-300"> Bulbapedia</a>
+                        <br />
+                    </section>
+                    <section className='py-2'>
+
+                        {pokemon.evolution && pokemon.evolves > 0 && (
+                            <div>
+                                <p>Evolution level: {pokemon.evolves}</p>
+                            </div>
+                        )}
+                    </section>
 
                     <div className="modal-footer absolute bottom-0 left-0 w-full">
                         <ul className="flex justify-center space-x-4 mb-4">
