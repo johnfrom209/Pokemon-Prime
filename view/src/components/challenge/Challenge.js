@@ -81,11 +81,21 @@ export default function Challenge() {
     useEffect(() => {
         //reload the page when a pokemon is added/removed
         renderPlayer1Caught();
-    }, [player1Caught]);
+    });
 
 
     // const [battleparty, setBattleparty] = useState([]);
-    // const [graveyard, setGraveyard] = useState([]);
+    const [graveyard, setGraveyard] = useState([]);
+
+    const handleGraveyard = (pokemon) => {
+        //add pokemon to graveyard
+        setGraveyard((graveyard) => [...graveyard, pokemon]);
+        console.log('graveyard', graveyard);
+        setPlayer1Caught((prevState) => prevState.filter((p) => p.id !== pokemon.id));
+        //update the local storage  
+        localStorage.setItem('player1Caught', JSON.stringify(player1Caught));
+        console.log('p1C', player1Caught)
+    };
 
     const [openModal, setOpenModal] = useState(false);
 
@@ -132,6 +142,7 @@ export default function Challenge() {
                         isOpen={openDetailModal}
                         onClose={() => setSelectedPokemon(null)}
                         pokemon={selectedPokemon}
+                        onGraveyard={handleGraveyard}
                     />
                 )}
             </div>
