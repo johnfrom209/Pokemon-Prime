@@ -58,9 +58,14 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 getPokemon(pokemon: ${addPokemon} ) {
                     sprite
                     species
+                    bulbapediaPage
+                    evolutionLevel
                     evolutions {
                         species
                     }
+                    flavorTexts {
+                        flavor
+                      }
                     types {
                         matchup {
                           attacking {
@@ -82,11 +87,34 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
             if (pokemonData.status !== 400) {
                 const { data } = await pokemonData.json();
-                // console.log(data.getPokemon);
-
+                // console.log("This is data", data);
                 let evo = "";
-                const typeNames = data.getPokemon.types.map((type) => type.name); // create an array of type names
+                // create an array of type names
+                const typeNames = data.getPokemon.types.map((type) => type.name);
+                let weakness = [];
+                //iterate through the weakness array and create a new array of objects with the type name and the weakness
+                if (data.getPokemon.types.length > 1) {
+                    for (let i = 0; i < data.getPokemon.types.length; i++) {
+                        weakness = weakness.concat(data.getPokemon.types[i].matchup.defending.effectiveTypes);
+                    }
+                } else {
+                    weakness = data.getPokemon.types[0].matchup.defending.effectiveTypes;
+                }
+                //Getting the Resistant Types
+                let resistant = [];
+                if (data.getPokemon.types.length > 1) {
+                    for (let i = 0; i < data.getPokemon.types.length; i++) {
+                        resistant = resistant.concat(data.getPokemon.types[i].matchup.attacking.effectiveTypes);
+                    }
+                } else {
+                    resistant = data.getPokemon.types[0].matchup.attacking.effectiveTypes;
+                }
+                //remove duplicates from the weakness array
+                weakness = [...new Set(weakness)];
+                //remove duplicates from the resistant array
+                resistant = [...new Set(resistant)];
 
+                //grab the evolution
                 if (data.getPokemon.evolutions) {
                     evo = data.getPokemon.evolutions.map((evo) => evo.species);
                 }
@@ -98,12 +126,10 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         evolution: evo,
                         sprite: data.getPokemon.sprite,
                         pokemonType: typeNames,
-                        superEffective: data.getPokemon.types[0].matchup.attacking.effectiveTypes,
-                        weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
+                        superEffective: resistant,
+                        weakness: weakness,
                     }
                 });
-                // console.log("ID: ", newId);
-                // console.log("____ID: ", newId.data.addPokemon._id);
 
                 //add pokemon to player's caught pokemon
                 await catchingP1({
@@ -119,6 +145,9 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     species: addPokemon,
                     type: typeNames,
                     sprite: data.getPokemon.sprite,
+                    pokemonWeak: weakness,
+                    pokemonResist: resistant,
+                    link: data.getPokemon.bulbapediaPage
                 }
                 ]));
 
@@ -128,6 +157,10 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     species: addPokemon,
                     type: typeNames,
                     sprite: data.getPokemon.sprite,
+                    pokemonWeak: weakness,
+                    pokemonResist: resistant,
+                    link: data.getPokemon.bulbapediaPage
+
                 }]);
             }
             else {
