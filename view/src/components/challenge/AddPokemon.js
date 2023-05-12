@@ -2,7 +2,7 @@ import React from 'react'
 import PokemonType from './PokemonType'
 
 
-export default function AddPokemon({ pokemon }) {
+export default function AddPokemon({ pokemon, onClickDetail }) {
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -12,7 +12,7 @@ export default function AddPokemon({ pokemon }) {
     pokemon.species = capitalizeFirstLetter(pokemon.species);
 
     return (
-        <div className='card-info dragThis bg-sapp-400 rounded mb-4  xl:w-40 xl:h-48 h-40 w-32 ml-1 border-4 border-amber-300 truncate '>
+        <div className='card-info dragThis bg-sapp-400 rounded mb-4  xl:w-40 xl:h-48 h-40 w-32 ml-1 border-4 border-amber-300 truncate ' onClick={() => onClickDetail(pokemon)}>
             <div className='py-3 px-5 relative space-x-1 pb-0 h-16 '>
                 <span className='italic mr-2 text-xs xl:textSize'>
                     {pokemon.name}

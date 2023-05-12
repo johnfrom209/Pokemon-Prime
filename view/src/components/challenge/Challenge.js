@@ -15,6 +15,7 @@ import { useQuery } from '@apollo/client';
 import { Query_Challenges } from '../../utils/queries';
 import { useMutation } from '@apollo/client';
 import { Mutation_AddChallenge } from '../../utils/mutations';
+import PokemonDetail from './PokemonDetail';
 
 var drake = dragula([document.querySelector('.player1Caught'), document.querySelector('.battleparty')], {
     copy: false, revertOnSpill: true, isContainer: function (el) {
@@ -34,11 +35,23 @@ let spriteList = JSON.parse(localStorage.getItem('player1Caught')) ?? [];
 
 export default function Challenge() {
 
+    //This is the modal state for the PokemonDetail component
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [openDetailModal, setOpenDetailModal] = useState(false);
+
+
+    const handlePokemonCardClick = (pokemon) => {
+        setSelectedPokemon(pokemon);
+        setOpenDetailModal(true);
+    };
+
     const [addChallenge, { error }] = useMutation(Mutation_AddChallenge);
     const addPlayerChallenge = () => {
         const playerToken = Auth.loggedIn() ? Auth.getProfile() : null;
 
         p1name = playerToken.data.username;
+
+
 
         // console.log('playerProfile', playerToken.data);
 
@@ -68,17 +81,27 @@ export default function Challenge() {
     useEffect(() => {
         //reload the page when a pokemon is added/removed
         renderPlayer1Caught();
-    }, [player1Caught]);
+    });
 
 
     // const [battleparty, setBattleparty] = useState([]);
-    // const [graveyard, setGraveyard] = useState([]);
+    const [graveyard, setGraveyard] = useState([]);
+
+    const handleGraveyard = (pokemon) => {
+        //add pokemon to graveyard
+        setGraveyard((graveyard) => [...graveyard, pokemon]);
+        console.log('graveyard', graveyard);
+        setPlayer1Caught((prevState) => prevState.filter((p) => p.id !== pokemon.id));
+        //update the local storage  
+        localStorage.setItem('player1Caught', JSON.stringify(player1Caught));
+        console.log('p1C', player1Caught)
+    };
 
     const [openModal, setOpenModal] = useState(false);
 
     const renderPlayer1Caught = () => player1Caught.map((pokemon) => {
-        return <AddPokemon key={pokemon.id} pokemon={pokemon} />
-    })
+        return <AddPokemon key={pokemon.id} pokemon={pokemon} onClickDetail={handlePokemonCardClick} />
+    });
 
     return (
         <div className='grid grid-cols-2 mainChallenge'>
@@ -114,7 +137,16 @@ export default function Challenge() {
                 {/* Quick Ref Area */}
                 {/* </div> */}
 
+                {selectedPokemon && (
+                    <PokemonDetail
+                        isOpen={openDetailModal}
+                        onClose={() => setSelectedPokemon(null)}
+                        pokemon={selectedPokemon}
+                        onGraveyard={handleGraveyard}
+                    />
+                )}
             </div>
+
 
         </div >
     )

@@ -58,9 +58,14 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                 getPokemon(pokemon: ${addPokemon} ) {
                     sprite
                     species
+                    bulbapediaPage
                     evolutions {
+                        evolutionLevel
                         species
                     }
+                    flavorTexts {
+                        flavor
+                      }
                     types {
                         matchup {
                           attacking {
@@ -82,13 +87,36 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
 
             if (pokemonData.status !== 400) {
                 const { data } = await pokemonData.json();
-                // console.log(data.getPokemon);
+                console.log("This is data", data);
+                // create an array of type names
+                const typeNames = data.getPokemon.types.map((type) => type.name);
+                let weakness = [];
+                //iterate through the weakness array and create a new array of objects with the type name and the weakness
+                if (data.getPokemon.types.length > 1) {
+                    for (let i = 0; i < data.getPokemon.types.length; i++) {
+                        weakness = weakness.concat(data.getPokemon.types[i].matchup.defending.effectiveTypes);
+                    }
+                } else {
+                    weakness = data.getPokemon.types[0].matchup.defending.effectiveTypes;
+                }
+                //Getting the Resistant Types
+                let resistant = [];
+                if (data.getPokemon.types.length > 1) {
+                    for (let i = 0; i < data.getPokemon.types.length; i++) {
+                        resistant = resistant.concat(data.getPokemon.types[i].matchup.attacking.effectiveTypes);
+                    }
+                } else {
+                    resistant = data.getPokemon.types[0].matchup.attacking.effectiveTypes;
+                }
+                //remove duplicates from the weakness array
+                weakness = [...new Set(weakness)];
+                //remove duplicates from the resistant array
+                resistant = [...new Set(resistant)];
 
                 let evo = "";
-                const typeNames = data.getPokemon.types.map((type) => type.name); // create an array of type names
-
+                //grab the evolution
                 if (data.getPokemon.evolutions) {
-                    evo = data.getPokemon.evolutions.map((evo) => evo.species);
+                    evo = evo.concat(data.getPokemon.evolutions[0].species);
                 }
                 // add pokemon to database
                 let newId = await addPokemonToDB({
@@ -98,12 +126,10 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                         evolution: evo,
                         sprite: data.getPokemon.sprite,
                         pokemonType: typeNames,
-                        superEffective: data.getPokemon.types[0].matchup.attacking.effectiveTypes,
-                        weakness: data.getPokemon.types[0].matchup.defending.effectiveTypes,
+                        superEffective: resistant,
+                        weakness: weakness,
                     }
                 });
-                // console.log("ID: ", newId);
-                // console.log("____ID: ", newId.data.addPokemon._id);
 
                 //add pokemon to player's caught pokemon
                 await catchingP1({
@@ -113,22 +139,67 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
                     }
                 });
 
-                localStorage.setItem('player1Caught', JSON.stringify([...player1Caught, {
-                    id: newId.data.addPokemon._id,
-                    name: nickName,
-                    species: addPokemon,
-                    type: typeNames,
-                    sprite: data.getPokemon.sprite,
-                }
-                ]));
+                if (evo) {
 
-                setPlayer1Caught([...player1Caught, {
-                    id: newId.data.addPokemon._id,
-                    name: nickName,
-                    species: addPokemon,
-                    type: typeNames,
-                    sprite: data.getPokemon.sprite,
-                }]);
+                    localStorage.setItem('player1Caught', JSON.stringify([...player1Caught, {
+                        id: newId.data.addPokemon._id,
+                        name: nickName,
+                        species: addPokemon,
+                        type: typeNames,
+                        sprite: data.getPokemon.sprite,
+                        pokemonWeak: weakness,
+                        pokemonResist: resistant,
+                        link: data.getPokemon.bulbapediaPage,
+                        evolves: data.getPokemon.evolutions[0].evolutionLevel,
+                        evolution: evo
+                    }
+                    ]));
+                } else {
+                    localStorage.setItem('player1Caught', JSON.stringify([...player1Caught, {
+                        id: newId.data.addPokemon._id,
+                        name: nickName,
+                        species: addPokemon,
+                        type: typeNames,
+                        sprite: data.getPokemon.sprite,
+                        pokemonWeak: weakness,
+                        pokemonResist: resistant,
+                        link: data.getPokemon.bulbapediaPage,
+                        evolves: null,
+                        evolution: evo
+                    }
+                    ]));
+                }
+
+                if (evo) {
+
+                    setPlayer1Caught([...player1Caught, {
+                        id: newId.data.addPokemon._id,
+                        name: nickName,
+                        species: addPokemon,
+                        type: typeNames,
+                        sprite: data.getPokemon.sprite,
+                        pokemonWeak: weakness,
+                        pokemonResist: resistant,
+                        link: data.getPokemon.bulbapediaPage,
+                        evolves: data.getPokemon.evolutions[0].evolutionLevel,
+                        evolution: evo
+
+                    }]);
+                } else {
+                    setPlayer1Caught([...player1Caught, {
+                        id: newId.data.addPokemon._id,
+                        name: nickName,
+                        species: addPokemon,
+                        type: typeNames,
+                        sprite: data.getPokemon.sprite,
+                        pokemonWeak: weakness,
+                        pokemonResist: resistant,
+                        link: data.getPokemon.bulbapediaPage,
+                        evolves: null,
+                        evolution: evo
+
+                    }]);
+                }
             }
             else {
                 setErrorMessage('Species not found');
@@ -164,16 +235,16 @@ export default function ModalAddPokemon({ openModal, onClose, setOpenModal, setP
     if (!openModal) return null
     return (
 
-        <div onClick={onClose} className='w-full h-full z-40 fixed '>
+        <div onClick={onClose} className='w-full h-full z-40 fixed  '>
             <div
                 onClick={(e) => {
                     e.stopPropagation()
                 }}
-                className='modalContainer w-2/4 relative content-center bg-blue-900 rounded-xl shadow-lg mx-auto my-20 p-4'
+                className='modalContainer w-2/4 relative content-center bg-blue-900 rounded-xl shadow-lg mx-auto my-20 p-4 '
             >
                 <div>
-                    <h1 className='text-blue-100 ml-5 text-4xl'>Add A Pokemon
-                        <button onClick={onClose} className='ml-80 text-lg inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9'>X</button>
+                    <h1 className='text-blue-100 ml-5 text-4xl '>Add A Pokemon
+                        <button onClick={onClose} className='absolute top-0 right-0 m-4 text-lg inline-block rounded-full bg-blue-600 text-white leading-normal uppercase shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-9 h-9 '>X</button>
                     </h1>
                 </div>
 
