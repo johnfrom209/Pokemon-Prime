@@ -1,6 +1,5 @@
 import React from 'react'
 import PokemonType from './PokemonType';
-import { Link } from 'react-router-dom';
 
 export default function PokemonDetail({ isOpen, onClose, pokemon, onGraveyard }) {
     if (!isOpen) return null;
