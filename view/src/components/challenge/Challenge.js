@@ -20,7 +20,8 @@ import PokemonDetail from './PokemonDetail';
 var drake = dragula([document.querySelector('.player1Caught'), document.querySelector('.battleparty')], {
     copy: false, revertOnSpill: true, isContainer: function (el) {
         return el.classList.contains('dragula-container');
-    }
+    },
+    ignore: el => el.classList.contains('no-drag')
 });
 
 
@@ -35,10 +36,29 @@ let spriteList = JSON.parse(localStorage.getItem('player1Caught')) ?? [];
 
 export default function Challenge() {
 
+    //list of pokemon caught by player 1
+    const [player1Caught, setPlayer1Caught] = useState(spriteList);
+
     //This is the modal state for the PokemonDetail component
     const [selectedPokemon, setSelectedPokemon] = useState(null);
     const [openDetailModal, setOpenDetailModal] = useState(false);
+    //search for pokemon
+    const [searchQuery, setSearchQuery] = useState("");
 
+    const handleSearchInputChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredPokemon = player1Caught.filter(
+        (pokemon) =>
+            pokemon.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (Array.isArray(pokemon.type) &&
+                pokemon.type.some((type) =>
+                    type.toLowerCase().includes(searchQuery.toLowerCase())
+                )) ||
+            (!Array.isArray(pokemon.type) &&
+                pokemon.type.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
 
     const handlePokemonCardClick = (pokemon) => {
         setSelectedPokemon(pokemon);
@@ -50,10 +70,6 @@ export default function Challenge() {
         const playerToken = Auth.loggedIn() ? Auth.getProfile() : null;
 
         p1name = playerToken.data.username;
-
-
-
-        // console.log('playerProfile', playerToken.data);
 
         //mutate a new challenge with player id
         let gameId = "639a814037441ad6b10cdff6"
@@ -72,7 +88,7 @@ export default function Challenge() {
             // return err;
         });
     }
-    const [player1Caught, setPlayer1Caught] = useState(spriteList);
+
 
     useEffect(() => {
         addPlayerChallenge();
@@ -113,25 +129,32 @@ export default function Challenge() {
                     <h4 >Alpha Sapphire</h4>
                 </div>
                 {/* added class 'player1Caught' just for identification. it does nothing */}
-                <div className='bg-indigo-800 h-4/5 m-5 rounded border shadow-xl shadow-black ' >
+                <div className='bg-sapp-200 h-4/5 m-5 rounded border shadow-xl shadow-black ' >
                     {/* this is for the Pokemon they caught */}
 
 
-                    <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-indigo-500 hover:bg-indigo-700 w-full border text-white font-bold py-2 px-4 rounded mb-1'>Add Pokemon</button>
+                    <button onClick={() => setOpenModal(true)} className='addPokemonButton bg-sapp-400 hover:bg-sapp-50 w-full border text-white font-bold py-2 px-4 rounded mb-1'>Add Pokemon</button>
 
-                    <div className='player1Caught dragula-container h-full w-full overflow-auto flex flex-wrap gap-4'>
+                    <div className='player1Caught dragula-container h-full w-full overflow-auto flex flex-wrap gap-4 scrollbarHide'>
                         {renderPlayer1Caught()}
                     </div>
                 </div>
             </div>
             <div className='h-screen mr-6'>
 
-                <div id='drop-battleparty' className='bg-gray-800 mt-24 h-2/5 rounded'>
-                    {/* Battle Party */}
-                    <div className='battleparty dragula-container h-full w-full overflow-auto flex flex-wrap gap-4 justify-evenly'>
-                    </div>
+                <section className='battleparty  bg-gray-800 mt-24 h-2/5 rounded overflow-auto flex flex-wrap gap-4 justify-evenly scrollbarHide'>
 
-                </div>
+                    <div className="relative">
+                        <h3 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 mt-16 text-lg font-bold no-drag z-0 text-white-50">
+                            Battle Party
+                        </h3>
+                        {/* Render your Pokemon cards here */}
+                    </div>
+                    <main className='flex flex-wrap gap-4 justify-evenly dragula-container w-full h-full z-20'>
+                        {/* <BattleParty /> */}
+                    </main>
+                </section>
+
 
                 {/* <div className='bg-gray-800 h-1/4 my-2 rounded '> */}
                 {/* Quick Ref Area */}

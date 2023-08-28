@@ -67,9 +67,27 @@ code {
 }
 
 .scrollbarHide {
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-  overflow: hidden;
+
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  &::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  /* Optional: Show scrollbar on hover */
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.no-drag {
+  pointer-events: none !important;
+  user-drag: none !important;
+  user-select: none !important;
 }
