@@ -4,7 +4,7 @@ import PokemonType from './PokemonType';
 export default function PokemonDetail({ isOpen, onClose, pokemon, onGraveyard }) {
     if (!isOpen) return null;
     return (
-        <div className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center scroll-hidden " >
+        <div className="modal fixed w-full h-full top-0 left-0 flex items-center justify-center scroll-hidden z-30 " >
             <div className="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onClick={onClose}></div>
 
             <div className="modal-content border border-white-500 bg-blue-900 w-full h-3/4 md:max-w-md mx-auto p-4 rounded shadow-lg z-50 overflow-y-auto relative scrollbarHide ">
